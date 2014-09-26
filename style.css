@@ -1,0 +1,11 @@
+.intro-msg
+{
+	text-align: center;
+	padding-top: 20%;
+	padding-bottom: 10%;
+	color: #FFF;
+}
+
+body{
+	background: url(intro-bg.jpg) no-repeat center center;
+}
