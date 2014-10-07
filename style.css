@@ -7,12 +7,43 @@
 }
 
 body{
-	background: url(intro-bg.jpg) no-repeat center center;
+	background: url(bg.jpg) no-repeat center center;
 }
 
 .signup-form
 {
-	color: #888;
+	color: #aaa;
 	text-align: center;
 	
+}
+.tagline
+{
+	color: #F6F1EB;
+}
+
+.sub
+{
+	color: #C7C3BE;
+}
+
+.services {
+  background: rgba(166,35,23,0.7);
+  padding: 10px 0;
+  color: #ffffff;
+}
+
+.service-item {
+  margin-bottom: 15px;
+}
+
+i.service-icon {
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  display: inline-block;
+  font-size: 56px;
+  width: 140px;
+  height: 140px;
+  line-height: 136px;
+  vertical-align: middle; 
+  text-align: center;
 }
