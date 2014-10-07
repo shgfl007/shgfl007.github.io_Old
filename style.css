@@ -47,3 +47,6 @@ i.service-icon {
   vertical-align: middle; 
   text-align: center;
 }
+.email_form {
+  background: rgba(0,0,0,0.7);
+}
