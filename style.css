@@ -37,13 +37,7 @@ body{
 }
 
 i.service-icon {
-  border: 3px solid #ffffff;
-  border-radius: 50%;
-  display: inline-block;
-  font-size: 56px;
-  width: 140px;
-  height: 140px;
-  line-height: 136px;
+  font-size: 350%;
   vertical-align: middle; 
   text-align: center;
 }
