@@ -1,91 +1,302 @@
-<!doctype html>
-<html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | webGL_test</title>
-    <link rel="stylesheet" href="TemplateData/style.css">
-    <link rel="shortcut icon" href="TemplateData/favicon.ico" />
-    <script src="TemplateData/UnityProgress.js"></script>
-  </head>
-  <body class="template">
-    <p class="header"><span>Unity WebGL Player | </span>webGL_test</p>
-    <div class="template-wrap clear">
-    <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="600px" width="960px"></canvas>
-      <div class="logo"></div>
-      <div class="fullscreen"><img src="TemplateData/fullscreen.png" width="38" height="38" alt="Fullscreen" title="Fullscreen" onclick="SetFullscreen(1);" /></div>
-      <div class="title">webGL_test</div>
-    </div>
-    <p class="footer">&laquo; created with <a href="http://unity3d.com/" title="Go to unity3d.com">Unity</a> &raquo;</p>
-    <script type='text/javascript'>
-  // connect to canvas
-  var Module = {
-    filePackagePrefixURL: "Release/",
-    memoryInitializerPrefixURL: "Release/",
-    preRun: [],
-    postRun: [],
-    print: (function() {
-      return function(text) {
-        console.log (text);
-      };
-    })(),
-    printErr: function(text) {
-      console.error (text);
-    },
-    canvas: document.getElementById('canvas'),
-    progress: null,
-    setStatus: function(text) {
-      if (this.progress == null) 
-      {
-        if (typeof UnityProgress != 'function')
-          return;
-        this.progress = new UnityProgress (canvas);
-      }
-      if (!Module.setStatus.last) Module.setStatus.last = { time: Date.now(), text: '' };
-      if (text === Module.setStatus.text) return;
-      this.progress.SetMessage (text);
-      var m = text.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/);
-      if (m)
-        this.progress.SetProgress (parseInt(m[2])/parseInt(m[4]));
-      if (text === "") 
-        this.progress.Clear()
-    },
-    totalDependencies: 0,
-    monitorRunDependencies: function(left) {
-      this.totalDependencies = Math.max(this.totalDependencies, left);
-      Module.setStatus(left ? 'Preparing... (' + (this.totalDependencies-left) + '/' + this.totalDependencies + ')' : 'All downloads complete.');
-    }
-  };
-  Module.setStatus('Downloading (0.0/1)');
-</script>
-<script src="Release/UnityConfig.js"></script>
-<script src="Release/fileloader.js"></script>
-<script>if (!(!Math.fround)) {
-  var script = document.createElement('script');
-  script.src = "Release/test.js";
-  document.body.appendChild(script);
-} else {
-  var codeXHR = new XMLHttpRequest();
-  codeXHR.open('GET', 'Release/test.js', true);
-  codeXHR.onload = function() {
-    var code = codeXHR.responseText;
-    if (!Math.fround) { 
-console.log('optimizing out Math.fround calls');
-code = code.replace(/Math_fround\(/g, '(').replace("'use asm'", "'almost asm'")
- }
+<!DOCTYPE html>
+<!--Lovingly Crafted By Rohan-->
+<html lang="en">
 
-    var blob = new Blob([code], { type: 'text/javascript' });
-    codeXHR = null;
-    var src = URL.createObjectURL(blob);
-    var script = document.createElement('script');
-    script.src = URL.createObjectURL(blob);
-    script.onload = function() {
-      URL.revokeObjectURL(script.src);
-    };
-    document.body.appendChild(script);
-  };
-  codeXHR.send(null);
-}
-</script>
-  </body>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Jump In!</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="css/stylish-portfolio.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Font CSS -->
+    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Luckiest+Guy' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+    <!-- Side Menu -->
+    <a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="fa fa-th"></i></a>
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+            <li class="sidebar-brand">Jump In.</a>
+            </li>
+            <li><a href="#top">Home</a>
+            </li>
+            <li><a href="#about">About</a>
+            </li>
+            <li><a href="#skills">Why Jump In?</a>
+            </li>
+            <li><a href="#portfolio">The Game</a>
+            </li>
+            <li><a href="#team">Our Team</a>
+            </li>
+            <li><a href="#contact">Contact</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /Side Menu -->
+
+    <!-- Full Page Image Header Area -->
+    <div id="top" class="header">
+        <div class="vert-text">
+            <img src="img/logo.png" alt="Jump In logo" height = "200" width = "194">
+            <br><br>
+            <h1 class="full-title" style="color:#db524b">Jump In!</h1>
+            <h3 class="full-title">
+                We make exercises fun and personalized for your kids!
+            </h3>
+            <a href="https://twitter.com/JumpInGame" class="btn btn-danger btn-lg" style="font-family: 'Luckiest Guy', cursive">@JumpInGame</a>
+        </div>
+    </div>
+    <!-- /Full Page Image Header Area -->
+
+    <!-- Intro -->
+    <div id="about" class="intro">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center">
+                    <h2 class="full-title">Jump In! is... </h2>
+                    <p class="lead">A video game that comes with a wearable to read pulse of the user and change its pace according to the user's portfile and the current average heart rate.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Intro -->
+
+    <!-- Services -->
+    <div id="skills" class="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center">
+                    <h2 class="full-title">Why Jump In?</h2>
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-1 text-center">
+                    <div class="service-item">
+                        <i class="service-icon glyphicon glyphicon-heart-empty"></i>
+                        <h4>Pulse Sensing</h4>
+                        <p>Did your navigation system shut down in the middle of that asteroid field? We can repair any dings and scrapes to your spacecraft!</p>
+                    </div>
+                </div>
+                <div class="col-md-2 text-center">
+                    <div class="service-item">
+                        <i class="service-icon glyphicon glyphicon-tasks"></i>
+                        <h4>Pulse Monitoring</h4>
+                        <p>Need to know how magnets work? Our problem solving solutions team can help you identify problems and conduct exploratory research.</p>
+                    </div>
+                </div>
+                <div class="col-md-2 text-center">
+                    <div class="service-item">
+                        <i class="service-icon glyphicon glyphicon-user"></i>
+                        <h4>Personalizing</h4>
+                        <p>Planning a time travel trip to the middle ages? Preserve the space time continuum by blending in with period accurate armor and weapons.</p>
+                    </div>
+                </div>
+                <div class="col-md-2 text-center">
+                    <div class="service-item">
+                        <i class="service-icon glyphicon glyphicon-flash"></i>
+                        <h4>Exercising</h4>
+                        <p>We are using Kinect to track the movement and the character in the game moves according to the speed the player is moving.</p>
+                    </div>
+                </div>
+                <div class="col-md-2 text-center">
+                    <div class="service-item">
+                        <i class="service-icon glyphicon glyphicon-send"></i>
+                        <h4>Entertaining</h4>
+                        <p>We've been voted the best pencil sharpening service for 10 consecutive years. If you have a pencil that feels dull, we'll get it sharp!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Services -->
+
+    <!-- Callout -->
+    <div class="callout">
+        <div class="vert-text">
+            <h1 class="full-title" style = "color: #db524b">Personalization + ????</h1>
+        </div>
+    </div>
+    <!-- /Callout -->
+
+    <!-- Portfolio -->
+    <div id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <h2 class="full-title">The Game</h2>
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-16 text-center">
+                <iframe width="80%" height="480" src="https://www.youtube.com/embed/MYeTJfZwAyQ" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <BR><BR><BR><BR>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <h2 class="full-title">Components</h2>
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <div class="portfolio-item">
+                        <a href="#">
+                            <img class="img-portfolio img-responsive" src="img/gameplay.png">
+                        </a>
+                        <h4>Game Scene</h4>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="portfolio-item">
+                        <a href="#">
+                            <img class="img-portfolio img-responsive" src="img/pulse.png">
+                        </a>
+                        <h4>Pulse Sensor</h4>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="portfolio-item">
+                        <a href="#">
+                            <img class="img-portfolio img-responsive" src="img/setup.png">
+                        </a>
+                        <h4>Physical Setup</h4>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- /Portfolio -->
+
+    <!-- Call to Action -->
+    <div id="team" class="call-to-action">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center">
+                    <h2 class="full-title">The Team</h2>
+                </div>
+            </div>
+            <div class = "row">
+                <div class="col-md-2 col-md-offset-1 text-center">
+                    <div class="service-item">
+                        <img src="img/place_holder.png" alt="Joelle" class="img-circle img-responsive">
+                        <h4>Joelle Dell'Erede</h4>
+                        <p>My name is Joelle and I am studying New Media at Ryerson. I am interested in design, advertising and marketing. On my spare time you can find me hanging out with friends/ family or at the pool teaching lessons!</p>
+                    </div>
+                </div>
+                <div class="col-md-2 text-center">
+                    <div class="portfolio-item">
+                        <img src="img/place_holder.png" alt="Danni" class="img-circle img-responsive">
+                        <h4>Danning Lu</h4>
+                        <p>Danni is passionate about technology and storytelling. She now is seeking for innovative and interactive way of telling stories using new technologies in digital media as a candidate of Master of Digital Media.</p>
+                    </div>
+                </div>
+                <div class="col-md-2 text-center">
+                    <div class="portfolio-item">
+                        <img src="img/place_holder.png" alt="Caylee" class="img-circle img-responsive">
+                        <h4>Caylee Kalisky</h4>
+                        <p>My name is Caylee and I am studying new media at ryerson. I am interested in graphic design, video editing and advertising. I love hanging out with my friends, and traveling the world</p>
+                    </div>
+                </div>
+                <div class="col-md-2 text-center">
+                    <div class="portfolio-item">
+                        <img src="img/place_holder.png" alt="Vitaliy" class="img-circle img-responsive">
+                        <h4>Vitaliy Krasylovets</h4>
+                        <p>My name is Vitaliy and I am Computer Science student. My intrests are in Web Developent, Game Development and MObile development. While I'm not busy progressing my career I like to get my sweat on at the gym.</p>
+                    </div>
+                </div>
+                <div class="col-md-2 text-center">
+                    <div class="portfolio-item">
+                        <img src="img/place_holder.png" alt="Vitaliy" class="img-circle img-responsive">
+                        <h4>George Popovic</h4>
+                        <p>My name is George Popovic and I'm currently a second year student studying New Media at Ryerson University. I've always been interested in the growth of technologies and how the possibilities have expanded for it's expression. I'm currently interning at Z103.5 as a promotion coordinator, and I love every minute of it.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Call to Action -->
+
+    <!-- Map -->
+    
+    <div id="contact" class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.595956383943!2d-79.38066100000003!3d43.656574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b34cad13907bf%3A0x393038cf922e1378!2sDigital+Media+Zone!5e0!3m2!1sen!2sca!4v1427256031079" width="100%" height="100%" frameborder="0" style="border:0"></iframe>
+    </div>
+    
+    <!-- /Map -->
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center">
+                    <ul class="list-inline">
+                        <li><a href="https://www.facebook.com/jumpingame?fref=ts" target="_blank"><i class="fa fa-facebook fa-3x"></i></a>
+                        </li>
+                        <li><a href="https://twitter.com/JumpInGame" target="_blank"><i class="fa fa-twitter fa-3x"></i></a>
+                        </li>
+                    </ul>
+                    <div class="top-scroll">
+                        <a href="#top"><i class="fa fa-circle-arrow-up scroll fa-4x"></i></a>
+                    </div>
+                    <hr>
+                    <p>Copyright &copy; JumpIn 2015</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- /Footer -->
+
+    <!-- JavaScript -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+    <!-- Custom JavaScript for the Side Menu and Smooth Scrolling -->
+    <script>
+    $("#menu-close").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+    </script>
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+    </script>
+    <script>
+    $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+    </script>
+
+</body>
+
 </html>
