@@ -163,8 +163,8 @@ i.service-icon {
   display: inline-block;
   font-size: 56px;
   width: 140px;
-  height: 140px;
-  line-height: 136px;
+  height: 100px;
+  line-height: 100px;
   vertical-align: middle; 
   text-align: center;
 }
@@ -238,6 +238,15 @@ i.scroll {
 i.scroll:hover {
   color: #0a5175;
 }
+/* list */
+ul.features {
+  list-style-type: none;
+}
+
+div.icon{
+  text-align: center;
+}
+
 /* Responsive */
 
 @media (max-width: 768px) {
@@ -253,5 +262,7 @@ i.scroll:hover {
   .map {
 	height: 75%;
   }
+
+
 
 }
