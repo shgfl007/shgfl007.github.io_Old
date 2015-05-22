@@ -721,11 +721,11 @@ body {
     display: none; 
     position: relative; 
     margin: 0 auto; 
-    width: 1400px; 
+    width: 1500px; 
     height: 600px; 
     overflow: hidden;
     background-color: #000;
-    left: -20%;
+    /*left: -20%;*/
 }
 
 .slide_slides{
@@ -733,7 +733,7 @@ body {
     position: relative; 
     left: 0px; 
     top: 0px; 
-    width: 1400px; 
+    width: 1500px; 
     height: 600px;
     overflow: hidden;
 }
