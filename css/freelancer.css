@@ -721,8 +721,8 @@ body {
     display: none; 
     position: relative; 
     margin: 0 auto; 
-    width: 1500px; 
-    height: 600px; 
+    width: 2000px; 
+    height: 1000px; 
     overflow: hidden;
     background-color: #000;
     /*left: -20%;*/
@@ -733,8 +733,8 @@ body {
     position: relative; 
     left: 0px; 
     top: 0px; 
-    width: 1500px; 
-    height: 600px;
+    width: 2000px; 
+    height: 1000px;
     overflow: hidden;
 }
 
@@ -791,7 +791,7 @@ body {
     width: 37px;
     height: 37px;
     cursor: pointer;
-    background: url(../img/a11.png) no-repeat;
+    background: url(../img/a21.png) no-repeat;
     overflow: hidden;
 }
 .jssora11l { background-position: -11px -41px; }
