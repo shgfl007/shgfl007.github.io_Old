@@ -192,16 +192,16 @@
 				requestAnimationFrame( animate );
 
 				//lon +=  0.1;
-				// lat = Math.max( - 85, Math.min( 85, lat ) );
-				// phi = THREE.Math.degToRad( 90 - lat );
-				// theta = THREE.Math.degToRad( lon );
-				//
-				// target.x = Math.sin( phi ) * Math.cos( theta );
-				// target.y = Math.cos( phi );
-				// target.z = Math.sin( phi ) * Math.sin( theta );
-				//
-				// camera.lookAt( target );
-				controls.update();
+				lat = Math.max( - 85, Math.min( 85, lat ) );
+				phi = THREE.Math.degToRad( 90 - lat );
+				theta = THREE.Math.degToRad( lon );
+
+				target.x = Math.sin( phi ) * Math.cos( theta );
+				target.y = Math.cos( phi );
+				target.z = Math.sin( phi ) * Math.sin( theta );
+
+				camera.lookAt( target );
+				//controls.update();
 				renderer.render( scene, camera );
 
 			}
