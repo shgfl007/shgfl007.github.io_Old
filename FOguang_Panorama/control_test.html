@@ -95,21 +95,21 @@
 						OrbitControls = new THREE.OrbitControls( camera, renderer.domElement );
 						//OrbitControls.addEventListener('change', render );
 						//OrbitControls.rotateUp(Math.PI / 4);
-						OrbitControls.rotateUp = Math.PI / 4;
+						//OrbitControls.rotateUp = Math.PI / 4;
 						OrbitControls.target.set(
 							camera.position.x + 0.1,
 							camera.position.y,
 							camera.position.z
 						);
-						OrbitControls.enableZoom = false;
-						OrbitControls.enablePan = false;
+						// OrbitControls.enableZoom = false;
+						// OrbitControls.enablePan = false;
 
 						// var geometry = new THREE.SphereGeometry( 500, 16, 8 );
 						// geometry.applyMatrix( new THREE.Matrix4().makeScale( -1, 1, 1 ) );
 
 						loader.load(
-								//resource url
-								'img/9/texture.jpg',
+								//resource url 'img/9/texture.jpg',
+								'img/2294472375_24a3b8ef46_o.jpg',
 								//when resource is loaded
 								function( texture ){
 									var geometry = new THREE.SphereGeometry( 500, 16, 8 );
