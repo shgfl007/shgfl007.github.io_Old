@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>three.js webgl - controls - deviceorientation</title>
+		<title>Foguang Temple Panorama Scene 9</title>
 		<meta charset="utf-8">
-		<meta name="viewport" content="user-scalable=no, initial-scale=1">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
 			body {
-				margin: 0px;
 				background-color: #000000;
+				margin: 0px;
 				overflow: hidden;
 			}
 
@@ -23,84 +23,163 @@
 			}
 
 			a {
-				color: #ff8800;
+				color: #ffffff;
 			}
 		</style>
 	</head>
 	<body>
 
 		<div id="container"></div>
-
 		<div id="info">
-			<a href="http://threejs.org" target="_blank">three.js</a> - equirectangular panorama demo with DeviceOrientation controls.
-			photo by <a href="http://www.flickr.com/photos/jonragnarsson/2294472375/" target="_blank">Jón Ragnarsson</a>.
+      <button id="changeControls" onclick="toggleControls()">Change Controls</button>
 		</div>
 
 		<script src="js/three.min.js"></script>
-		<script src="js/device_orientation_controls.js"></script>
+    <script src="js/DeviceOrientationControls.js"></script>
+    <script src="js/OrbitControls.js"></script>
 
 		<script>
-			(function() {
-				  "use strict"
 
-				  window.addEventListener('load', function() {
+			var camera, scene, renderer, loader;
 
-						var container, camera, scene, renderer, controls, geometry, mesh;
+			// var isUserInteracting = false,
+			// onMouseDownMouseX = 0, onMouseDownMouseY = 0,
+			// lon = 0, onMouseDownLon = 0,
+			// lat = 0, onMouseDownLat = 0,
+			// phi = 0, theta = 0;
 
-						var animate = function(){
+      var orbitControl, deviceOrientation, controls;
+      function toggleControls(){
+        if (deviceOrientation) {
+          deviceOrientation = false;
+        }else {
+          deviceOrientation = true;
+          controls.connect();
+        }
+        console.log("change controls: deviceOrientation = " + deviceOrientation);
+      }
 
-							window.requestAnimationFrame( animate );
+			init();
+			animate();
 
-							controls.update();
-							renderer.render(scene, camera);
+			function init() {
 
-						};
+				var container, mesh;
 
-						container = document.getElementById( 'container' );
+				container = document.getElementById( 'container' );
 
-						camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1100);
+				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
+				camera.target = new THREE.Vector3( 0, 0, 0 );
 
-						controls = new THREE.DeviceOrientationControls( camera );
+				scene = new THREE.Scene();
 
-						scene = new THREE.Scene();
+        loader = new THREE.TextureLoader();
 
-						var geometry = new THREE.SphereGeometry( 500, 16, 8 );
-						geometry.applyMatrix( new THREE.Matrix4().makeScale( -1, 1, 1 ) );
+        loader.load(
+          'img/9/texture.jpg',
+          function( texture ){
+            var geometry = new THREE.SphereGeometry( 500, 60, 40 );
+    				geometry.scale( - 1, 1, 1 );
 
-						var material = new THREE.MeshBasicMaterial( {
-								map: THREE.ImageUtils.loadTexture( 'img/9/texture.jpg' )
-						} );
+    				var material = new THREE.MeshBasicMaterial( {
+    					map: texture
+    				} );
 
-						var mesh = new THREE.Mesh( geometry, material );
-						scene.add( mesh );
+    				mesh = new THREE.Mesh( geometry, material );
 
-						var geometry = new THREE.BoxGeometry( 100, 100, 100, 4, 4, 4 );
-						var material = new THREE.MeshBasicMaterial( );
-						var mesh = new THREE.Mesh( geometry, material );
-						scene.add( mesh );
+    				scene.add( mesh );
+          }
+        );
 
-						renderer = new THREE.WebGLRenderer();
-						renderer.setSize(window.innerWidth, window.innerHeight);
-						renderer.domElement.style.position = 'absolute';
-						renderer.domElement.style.top = 0;
-						container.appendChild(renderer.domElement);
+				// var geometry = new THREE.SphereGeometry( 500, 60, 40 );
+				// geometry.scale( - 1, 1, 1 );
+        //
+				// var material = new THREE.MeshBasicMaterial( {
+				// 	map: THREE.ImageUtils.loadTexture( 'img/9/texture.jpg' )
+				// } );
+        //
+				// mesh = new THREE.Mesh( geometry, material );
+        //
+				// scene.add( mesh );
 
-						window.addEventListener('resize', function() {
+				renderer = new THREE.WebGLRenderer();
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				container.appendChild( renderer.domElement );
 
-							camera.aspect = window.innerWidth / window.innerHeight;
-							camera.updateProjectionMatrix();
-							renderer.setSize( window.innerWidth, window.innerHeight );
+        //controls
 
-						}, false);
+        deviceOrientation = false;
 
-						controls.connect();
 
-						animate();
+        orbitControl = new THREE.OrbitControls(camera, renderer.domElement);
 
-				  }, false);
+        orbitControl.target.set(
+          camera.position.x + 0.1,
+          camera.position.y,
+          camera.position.z
+        );
 
-			})();
+        controls = new THREE.DeviceOrientationControls( camera );
+
+
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+        if(deviceOrientation){
+          controls.update();
+        }else {
+          orbitControl.update();
+        }
+
+				update();
+
+			}
+
+			function update() {
+
+				// if ( isUserInteracting === false ) {
+        //
+				// 	lon += 0.1;
+        //
+				// }
+        //
+				// lat = Math.max( - 85, Math.min( 85, lat ) );
+				// phi = THREE.Math.degToRad( 90 - lat );
+				// theta = THREE.Math.degToRad( lon );
+
+				// camera.target.x = 500 * Math.sin( phi ) * Math.cos( theta );
+				// camera.target.y = 500 * Math.cos( phi );
+				// camera.target.z = 500 * Math.sin( phi ) * Math.sin( theta );
+
+				//camera.lookAt( camera.target );
+
+				/*
+				// distortion
+				camera.position.copy( camera.target ).negate();
+				*/
+
+				renderer.render( scene, camera );
+
+			}
+
 		</script>
-
 	</body>
 </html>
