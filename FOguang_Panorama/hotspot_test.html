@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Foguang Temple Panorama Scene 4</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				background-color: #000000;
+				margin: 0px;
+				overflow: hidden;
+			}
+
+			#info {
+				position: absolute;
+				top: 0px; width: 100%;
+				color: #ffffff;
+				padding: 5px;
+				font-family:Monospace;
+				font-size:13px;
+				font-weight: bold;
+				text-align:center;
+			}
+
+			a {
+				color: #ffffff;
+			}
+
+			.popup{
+            max-width: 75%;
+            height: auto;
+            background-color: rgba(255, 255, 255, 0.49);
+            border-radius: 5px;
+            position: absolute;
+            bottom: -105%;
+
+            left: 10%;
+            padding: 5px 20px 5px 20px;
+            -moz-box-shadow: 3px 3px 5px 6px #ccc;
+            -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+            box-shadow: 1px 3px 1px 1px rgba(0, 0, 0, 0.17);
+            z-index:1109;
+        }
+		</style>
+	</head>
+	<body>
+
+		<div id="container"></div>
+		<div id="info">
+      <button id="changeControls" onclick="toggleControls()">Change Controls</button>
+			<button id="hotspotbutton" onclick="toggleHotspots()">Show/Hide Hotspots</button>
+			<div class="popup"><div class="text"></div></div>
+		</div>
+
+
+		<script src="js/three.min.js"></script>
+		<script src="js/jquery.js"></script>
+
+    <script src="js/DeviceOrientationControls.js"></script>
+    <script src="js/OrbitControlsHacked.js"></script>
+
+
+		<script>
+
+			var camera, scene, renderer, loader;
+
+			// var isUserInteracting = false,
+			// onMouseDownMouseX = 0, onMouseDownMouseY = 0,
+			// lon = 0, onMouseDownLon = 0,
+			// lat = 0, onMouseDownLat = 0,
+			// phi = 0, theta = 0;
+
+      var orbitControl, deviceOrientation, controls;
+      function toggleControls(){
+        if (deviceOrientation) {
+          deviceOrientation = false;
+        }else {
+          deviceOrientation = true;
+          controls.connect();
+        }
+        console.log("change controls: deviceOrientation = " + deviceOrientation);
+      }
+
+			var hotspotControl = false;
+			function toggleHotspots(){
+				if (hotspotControl) {
+					hotspotControl = false;
+				}else {
+					hotspotControl = true;
+				}
+				console.log("hotspotControl = " + hotspotControl);
+			}
+
+			//vars for hotspots and hotspot controls
+			var object, raycaster, mouse;
+			var objects = [];
+
+			init();
+			animate();
+
+			function init() {
+				//popup window
+				$(".popup").hide();
+
+				var container, mesh;
+
+				container = document.getElementById( 'container' );
+
+				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
+				camera.target = new THREE.Vector3( 0, 0, 0 );
+
+				scene = new THREE.Scene();
+
+        loader = new THREE.TextureLoader();
+
+        loader.load(
+          'img/4/texture.jpg',
+          function( texture ){
+            var geometry = new THREE.SphereGeometry( 500, 60, 40 );
+    				geometry.scale( - 1, 1, 1 );
+
+    				var material = new THREE.MeshBasicMaterial( {
+    					map: texture
+    				} );
+
+    				mesh = new THREE.Mesh( geometry, material );
+						mesh.name = "pan";
+
+    				scene.add( mesh );
+          }
+        );
+
+
+
+				//hotspot stuff
+				var hemi = new THREE.HemisphereLight(0xffffff, 0xff0000);
+        scene.add(hemi);
+
+				var material = new THREE.MeshLambertMaterial();
+
+				object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
+				object.position.set(-400, 100, 200);
+				object.name = "testOBJ001";
+				objects.push(object);
+				if (!hotspotControl) {
+					object.visible = false;
+				}
+				scene.add(object);
+
+
+
+				raycaster = new THREE.Raycaster();
+				mouse = new THREE.Vector2();
+
+				//------------------------------------------
+
+				renderer = new THREE.WebGLRenderer();
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				container.appendChild( renderer.domElement );
+
+        //controls
+
+        deviceOrientation = false;
+
+
+        orbitControl = new THREE.OrbitControls(camera, renderer.domElement);
+
+        orbitControl.target.set(
+          camera.position.x + 0.1,
+          camera.position.y,
+          camera.position.z
+        );
+
+        controls = new THREE.DeviceOrientationControls( camera );
+
+
+
+				window.addEventListener( 'resize', onWindowResize, false );
+				document.addEventListener('mousemove', onDocumentMouseDown, false);
+				//document.addEventListener('touchstart', onDocumentTouchStart, false);
+
+
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+			function onDocumentMouseDown(event){
+				event.preventDefault();
+				if (hotspotControl) {
+
+					mouse.x = ( event.clientX / renderer.domElement.width) * 2 - 1;
+					mouse.y = - ( event.clientY / renderer.domElement.height) * 2 + 1;
+					//mouse.x = event.clientX; mouse.y = event.clientY;
+					console.log("mouse x is " + mouse.x + " clientX is " + event.clientX);
+					console.log("mouse y is " + mouse.y + " clientY is " + event.clientY);
+
+					raycaster.setFromCamera( mouse, camera );
+
+					var intersects = raycaster.intersectObjects (objects, true);
+					//console.log("number of objs in objects: " + objects.length);
+					console.log("intersects " + intersects.length);
+					if (intersects.length > 0) {
+						for (var i = 0; i < intersects.length; i++) {
+
+								$( ".text" ).empty();
+	            $( ".popup" ).append( "<div class='text'><strong>#" + intersects[i].object.name + "</strong></p></div>" );
+	            $(".popup").show();
+							console.log("intersects detected! " + intersects[i].object.name);
+						}
+					}
+				}
+
+			}
+
+
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+        if(deviceOrientation){
+          controls.update();
+        }else {
+          orbitControl.update();
+        }
+
+				update();
+
+			}
+
+			function update() {
+
+				// if ( isUserInteracting === false ) {
+        //
+				// 	lon += 0.1;
+        //
+				// }
+        //
+				// lat = Math.max( - 85, Math.min( 85, lat ) );
+				// phi = THREE.Math.degToRad( 90 - lat );
+				// theta = THREE.Math.degToRad( lon );
+
+				// camera.target.x = 500 * Math.sin( phi ) * Math.cos( theta );
+				// camera.target.y = 500 * Math.cos( phi );
+				// camera.target.z = 500 * Math.sin( phi ) * Math.sin( theta );
+
+				//camera.lookAt( camera.target );
+
+				/*
+				// distortion
+				camera.position.copy( camera.target ).negate();
+				*/
+				if (hotspotControl) {
+					object.visible = true;
+
+				}else {
+					object.visible = false;
+					$(".popup").hide();
+				}
+
+				renderer.render( scene, camera );
+
+			}
+
+		</script>
+	</body>
+</html>
