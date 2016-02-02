@@ -227,7 +227,7 @@
 					//window.open('panorama_5.html','_self');
 				}, false);
 
-				domEvents.addEventListener(object, 'touch', function(event){
+				domEvents.addEventListener(object, 'touchstart', function(event){
 						console.log('you clicked on mesh', object);
 						// $(".popup").html("You Clicked On Mesh!!!!");
 						// $(".popup").show();
@@ -241,7 +241,7 @@
 				}
 			);
 
-			domEvents.addEventListener(door, 'touch', function(event){
+			domEvents.addEventListener(door, 'touchstart', function(event){
 						console.log('click on the door!!', object);
 						window.open('panorama_5.html','_self');
 				}
@@ -258,6 +258,12 @@
 			});
 
 			domEvents.addEventListener(door_right, 'click', function(event){
+					console.log('click on the door!!', object);
+					window.open('panorama_3.html','_self');
+				}
+			);
+
+			domEvents.addEventListener(door_right, 'touchstart', function(event){
 					console.log('click on the door!!', object);
 					window.open('panorama_3.html','_self');
 				}
