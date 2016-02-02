@@ -26,7 +26,7 @@
 				color: #ffffff;
 			}
 
-			.popup{
+			/*.popup{
             max-width: 75%;
             height: auto;
             background-color: rgba(255, 255, 255, 0.49);
@@ -34,27 +34,48 @@
             position: absolute;
             bottom: -105%;
 
-            left: 10%;
+            left: 37%;
             padding: 5px 20px 5px 20px;
             -moz-box-shadow: 3px 3px 5px 6px #ccc;
             -webkit-box-shadow: 3px 3px 5px 6px #ccc;
             box-shadow: 1px 3px 1px 1px rgba(0, 0, 0, 0.17);
             z-index:1109;
-        }
+        }*/
 		</style>
+		<link rel="stylesheet" href="css/bootstrap.css">
 	</head>
 	<body>
 
 		<div id="container"></div>
 		<div id="info">
-      <button id="changeControls" onclick="toggleControls()">Change Controls</button>
-			<button id="hotspotbutton" onclick="toggleHotspots()">Show/Hide Hotspots</button>
-			<div class="popup"><div class="text"></div></div>
+      <button type="button" class="btn btn-danger" id="changeControls" onclick="toggleControls()">Change Controls</button>
+			<button type="button" class="btn btn-danger" id="hotspotbutton" onclick="toggleHotspots()">Show/Hide Hotspots</button>
+			<!-- <div class="popup"><div class="text"></div></div> -->
+		</div>
+
+
+		<!--   Modals  -->
+		<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  		<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        		<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      		</div>
+      		<div class="modal-body">
+        	...
+      		</div>
+      		<div class="modal-footer">
+        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      		</div>
+    		</div>
+  		</div>
 		</div>
 
 
 		<script src="js/three.min.js"></script>
 		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.js"></script>
 		<script src="js/threex.domevents.js"></script>
 
     <script src="js/DeviceOrientationControls.js"></script>
@@ -100,7 +121,7 @@
 
 			function init() {
 				//popup window
-				$(".popup").hide();
+				// $(".popup").hide();
 
 				var container, mesh;
 
@@ -133,6 +154,7 @@
 
 
 				//hotspot stuff
+				//--------------------------------------------------------------------------
 				var hemi = new THREE.HemisphereLight(0xffffff, 0xff0000);
         scene.add(hemi);
 
@@ -150,13 +172,23 @@
 
 				var door;
 				var geometry = new THREE.PlaneGeometry( 60, 100, 32 );
-				var material = new THREE.MeshBasicMaterial( {color: 0xffff00, side: THREE.DoubleSide} );
+				var material = new THREE.MeshBasicMaterial( {color: 0xffffff, side: THREE.DoubleSide} );
 				material.transparent = true; material.opacity = 0.5;
 				var door = new THREE.Mesh( geometry, material );
 
 				door.position.set(90, 30, 400);
 				door.rotation.y = 15*Math.PI/180;
 				scene.add( door );
+
+				var door_right;
+				var geometry = new THREE.PlaneGeometry( 60, 100, 32 );
+				var material = new THREE.MeshBasicMaterial( {color: 0xffffff, side: THREE.DoubleSide} );
+				material.transparent = true; material.opacity = 0.5;
+				var door_right = new THREE.Mesh( geometry, material );
+
+				door_right.position.set(-120, 30, -400);
+				door_right.rotation.y = 15*Math.PI/180;
+				scene.add( door_right );
 
 
 
@@ -186,15 +218,16 @@
 
 //----------------------------------------------------------------------------------------
 				//dom events
-				domEvents = new THREEx.DomEvents(camera, renderer.domElement);
-				domEvents.addEventListener(object, 'click', function(event){
+			domEvents = new THREEx.DomEvents(camera, renderer.domElement);
+			domEvents.addEventListener(object, 'click', function(event){
 					console.log('you clicked on mesh', object);
-					$(".popup").html("You Clicked On Mesh!!!!");
-					$(".popup").show();
+					// $(".popup").html("You Clicked On Mesh!!!!");
+					// $(".popup").show();
+					$('#modal1').modal('toggle');
 					//window.open('panorama_5.html','_self');
 				}, false);
 
-				domEvents.addEventListener(door, 'click', function(event){
+			domEvents.addEventListener(door, 'click', function(event){
 						console.log('click on the door!!', object);
 						window.open('panorama_5.html','_self');
 				}
@@ -206,6 +239,20 @@
 
 			domEvents.addEventListener(door, 'mouseout', function(event){
 				door.material.opacity = 0.5;
+			});
+
+			domEvents.addEventListener(door_right, 'click', function(event){
+					console.log('click on the door!!', object);
+					window.open('panorama_3.html','_self');
+				}
+			);
+
+			domEvents.addEventListener(door_right, 'mouseover', function(event){
+				door_right.material.opacity = 0.8;
+			});
+
+			domEvents.addEventListener(door_right, 'mouseout', function(event){
+				door_right.material.opacity = 0.5;
 			});
 //----------------------------------------------------------------------------------------
 
@@ -244,32 +291,12 @@
 
 			function update() {
 
-				// if ( isUserInteracting === false ) {
-        //
-				// 	lon += 0.1;
-        //
-				// }
-        //
-				// lat = Math.max( - 85, Math.min( 85, lat ) );
-				// phi = THREE.Math.degToRad( 90 - lat );
-				// theta = THREE.Math.degToRad( lon );
-
-				// camera.target.x = 500 * Math.sin( phi ) * Math.cos( theta );
-				// camera.target.y = 500 * Math.cos( phi );
-				// camera.target.z = 500 * Math.sin( phi ) * Math.sin( theta );
-
-				//camera.lookAt( camera.target );
-
-				/*
-				// distortion
-				camera.position.copy( camera.target ).negate();
-				*/
 				if (hotspotControl) {
 					object.visible = true;
 
 				}else {
 					object.visible = false;
-					$(".popup").hide();
+					// $(".popup").hide();
 				}
 
 				renderer.render( scene, camera );
