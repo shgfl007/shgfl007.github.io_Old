@@ -227,11 +227,27 @@
 					//window.open('panorama_5.html','_self');
 				}, false);
 
+				domEvents.addEventListener(object, 'touches', function(event){
+						console.log('you clicked on mesh', object);
+						// $(".popup").html("You Clicked On Mesh!!!!");
+						// $(".popup").show();
+						$('#modal1').modal('toggle');
+						//window.open('panorama_5.html','_self');
+					}, false);
+
 			domEvents.addEventListener(door, 'click', function(event){
 						console.log('click on the door!!', object);
 						window.open('panorama_5.html','_self');
 				}
 			);
+
+			domEvents.addEventListener(door, 'touches', function(event){
+						console.log('click on the door!!', object);
+						window.open('panorama_5.html','_self');
+				}
+			);
+
+
 
 			domEvents.addEventListener(door, 'mouseover', function(event){
 				door.material.opacity = 0.8;
