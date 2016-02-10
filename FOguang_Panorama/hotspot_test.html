@@ -76,7 +76,7 @@
 		<script src="js/three.min.js"></script>
 		<script src="js/jquery.js"></script>
 		<script src="js/bootstrap.js"></script>
-		<script src="js/threex.domevents.js"></script>
+		<script src="js/threex.domevents_hacked.js"></script>
 
     <script src="js/DeviceOrientationControls.js"></script>
     <script src="js/OrbitControlsHacked.js"></script>
@@ -224,18 +224,11 @@
 					// $(".popup").html("You Clicked On Mesh!!!!");
 					// $(".popup").show();
 					$('#modal1').modal('toggle');
-					alert("click");
+					//alert("click");
 					//window.open('panorama_5.html','_self');
 				}, false);
 
-				domEvents.addEventListener(object, 'touchstart', function(event){
-						console.log('you clicked on mesh', object);
-						// $(".popup").html("You Clicked On Mesh!!!!");
-						// $(".popup").show();
-						$('#modal1').modal('toggle');
-						alert("click");
-						//window.open('panorama_5.html','_self');
-					}, false);
+
 
 			domEvents.addEventListener(door, 'click', function(event){
 						console.log('click on the door!!', object);
@@ -243,11 +236,7 @@
 				}
 			);
 
-			domEvents.addEventListener(door, 'touchstart', function(event){
-						console.log('click on the door!!', object);
-						window.open('panorama_5.html','_self');
-				}
-			);
+
 
 
 
@@ -265,11 +254,7 @@
 				}
 			);
 
-			domEvents.addEventListener(door_right, 'touchstart', function(event){
-					console.log('click on the door!!', object);
-					window.open('panorama_3.html','_self');
-				}
-			);
+
 
 			domEvents.addEventListener(door_right, 'mouseover', function(event){
 				door_right.material.opacity = 0.8;
