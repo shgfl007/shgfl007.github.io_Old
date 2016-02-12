@@ -364,7 +364,7 @@ THREEx.DomEvents.prototype._onEvent	= function(eventName, mouseX, mouseY, origDo
 	if( !objectCtx )	return;
 
 	// notify handlers
-	console.log(object3d.name + " " + eventName);
+	//console.log(object3d.name + " " + eventName);
 	this._notify(eventName, object3d, origDomEvent, intersect);
 }
 
@@ -430,7 +430,7 @@ THREEx.DomEvents.prototype._onMouseMove	= function(domEvent)
 THREEx.DomEvents.prototype._onClick		= function(event)
 {
 	// TODO handle touch ?
-	this._onTouchEvent('tap' , event);
+	//this._onTouchEvent('tap' , event);
 	this._onMouseEvent('click'	, event);
 }
 THREEx.DomEvents.prototype._onDblClick		= function(event)
@@ -467,15 +467,15 @@ THREEx.DomEvents.prototype._onTouchStart	= function(event){
 	         };
 	    }
 
-	console.log("touch start");
+	//console.log("touch start");
 	return this._onTouchEvent('mousedown', event);
 }
 
 
 THREEx.DomEvents.prototype._onTouchEnd	= function(event){
-	console.log("touch end");
+	//console.log("touch end");
 	//handle tap event here
-	console.log("event.changedTouches.length is " + event.changedTouches.length);
+	//console.log("event.changedTouches.length is " + event.changedTouches.length);
 	var touches = event.changedTouches;
 
     for(var j = 0; j < touches.length; j++) {
@@ -485,7 +485,7 @@ THREEx.DomEvents.prototype._onTouchEnd	= function(event){
         theTouchInfo.dx = touches[j].pageX - theTouchInfo.pageX;  /* x-distance moved since touchstart */
         theTouchInfo.dy = touches[j].pageY - theTouchInfo.pageY;  /* y-distance moved since touchstart */
 
-				console.log("dx is " + theTouchInfo.dx + ". dy is " + theTouchInfo.dy);
+				//console.log("dx is " + theTouchInfo.dx + ". dy is " + theTouchInfo.dy);
 
 				if ((theTouchInfo.dx == 0) && (theTouchInfo.dy == 0)) {
 					//console.log("tap!!!!");
@@ -517,13 +517,13 @@ THREEx.DomEvents.prototype._onTouchEvent	= function(eventName, domEvent)
 {
 	domEvent.preventDefault();
 
-	console.log("touch event name is " + eventName);
+	//console.log("touch event name is " + eventName);
 	//console.log("domEvent.touches.length is " + domEvent.touches.length);
 	if( (domEvent.touches.length != 1) && (domEvent.changedTouches.length != 1) ){
 		return undefined;
 	}	else if((domEvent.touches.length != 1) && (domEvent.changedTouches.length != 0)){
 		//this is the tap event
-		console.log("tap event triggered");
+		//console.log("tap event triggered");
 		var mouseX	= +(domEvent.changedTouches[ 0 ].pageX / window.innerWidth ) * 2 - 1;
 		var mouseY	= -(domEvent.changedTouches[ 0 ].pageY / window.innerHeight) * 2 + 1;
 		this._onEvent(eventName, mouseX, mouseY, domEvent);

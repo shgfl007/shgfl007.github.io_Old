@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Foguang Temple Panorama Scene 4</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				background-color: #000000;
+				margin: 0px;
+				overflow: hidden;
+			}
+
+			#info {
+				position: absolute;
+				top: 0px; width: 100%;
+				color: #ffffff;
+				padding: 5px;
+				font-size:13px;
+				font-weight: bold;
+				text-align:center;
+			}
+
+			a {
+				color: #ffffff;
+			}
+
+			/*.popup{
+            max-width: 75%;
+            height: auto;
+            background-color: rgba(255, 255, 255, 0.49);
+            border-radius: 5px;
+            position: absolute;
+            bottom: -105%;
+
+            left: 37%;
+            padding: 5px 20px 5px 20px;
+            -moz-box-shadow: 3px 3px 5px 6px #ccc;
+            -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+            box-shadow: 1px 3px 1px 1px rgba(0, 0, 0, 0.17);
+            z-index:1109;
+        }*/
+		</style>
+		<link rel="stylesheet" href="css/bootstrap.css">
+	</head>
+	<body>
+
+		<div id="container"></div>
+		<div id="info">
+      <button type="button" class="btn btn-danger" id="changeControls" onclick="toggleControls()">Change Controls</button>
+			<button type="button" class="btn btn-danger" id="hotspotbutton" onclick="toggleHotspots()">Show/Hide Hotspots</button>
+			<!-- <div class="popup"><div class="text"></div></div> -->
+		</div>
+
+
+		<!--   Modals  -->
+
+		<!-- ================= Modal 1 for title 1 ==================================================== -->
+		<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  		<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        		<h4 class="modal-title" id="myModalLabel">宁公遇题记的发现</h4>
+      		</div>
+      		<div class="modal-body" align="center">
+						<img src="img/4/details/title1.jpg" height="400px">
+
+						<div id="audio1_placeholder">
+							<audio id="audio1" controls="controls">
+								<source src="audio/4/1.mp3" type="audio/mp3">
+								<source src="audio/4/1.ogg" type="audio/ogg">
+								<source src="audio/4/1.wav" type="audio/wav">
+							</audio>
+						</div>
+
+        	...
+      		</div>
+      		<div class="modal-footer">
+        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      		</div>
+    		</div>
+  		</div>
+		</div>
+		<!-- ================= End of Modal 1 ========================================================= -->
+
+
+		<script src="js/three.min.js"></script>
+		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<script src="js/threex.domevents_hacked.js"></script>
+
+    <script src="js/DeviceOrientationControls.js"></script>
+    <script src="js/OrbitControlsHacked.js"></script>
+
+
+		<script>
+
+			var camera, scene, renderer, loader;
+
+			// var isUserInteracting = false,
+			// onMouseDownMouseX = 0, onMouseDownMouseY = 0,
+			// lon = 0, onMouseDownLon = 0,
+			// lat = 0, onMouseDownLat = 0,
+			// phi = 0, theta = 0;
+
+      var orbitControl, deviceOrientation, controls;
+      function toggleControls(){
+        if (deviceOrientation) {
+          deviceOrientation = false;
+        }else {
+          deviceOrientation = true;
+          controls.connect();
+        }
+        console.log("change controls: deviceOrientation = " + deviceOrientation);
+      }
+
+			var hotspotControl = true;
+			function toggleHotspots(){
+				if (hotspotControl) {
+					hotspotControl = false;
+				}else {
+					hotspotControl = true;
+				}
+				console.log("hotspotControl = " + hotspotControl);
+			}
+
+			//vars for hotspots and hotspot controls
+			var domEvents;
+
+			//var for setting camera
+			var count = 0;
+
+			var hotspots = [];
+
+			init();
+			animate();
+
+			function init() {
+				//popup window
+				// $(".popup").hide();
+
+				var container, mesh;
+
+				container = document.getElementById( 'container' );
+
+				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
+				//camera.lookAt(new THREE.Vector3( -400, 100, 200 ));
+				camera.target = new THREE.Vector3( -400, 100, 200 );
+				//camera.rotate.z = 5*Math.PI/180;
+				camera.rotation.x = -90 * Math.PI / 180;
+				camera.rotation.y = 330 * Math.PI / 180;
+				camera.rotation.z = -60 * Math.PI / 180;
+
+				scene = new THREE.Scene();
+
+				camera.rotation.set(0.06, 1.9, 8.4);
+				scene.add(camera);
+
+				//scene.add(camera);
+
+
+        loader = new THREE.TextureLoader();
+
+        loader.load(
+          'img/4/texture.jpg',
+          function( texture ){
+            var geometry = new THREE.SphereGeometry( 500, 60, 40 );
+    				geometry.scale( - 1, 1, 1 );
+
+    				var material = new THREE.MeshBasicMaterial( {
+    					map: texture
+    				} );
+
+    				mesh = new THREE.Mesh( geometry, material );
+						mesh.name = "pan";
+
+    				scene.add( mesh );
+          }
+        );
+
+
+
+		//----------------------- hotspot stuff ----------------------------------------------------------------
+
+
+
+		//------------- titles / writings on the roof structure ---------------------------------------
+				//--------------------------------------------------------------------------
+				var hemi = new THREE.HemisphereLight(0xffffff, 0xff0000);
+        scene.add(hemi);
+
+				var material = new THREE.MeshLambertMaterial();
+
+				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
+				object = new THREE.Mesh( new  THREE.SphereGeometry(15, 20, 10), material);
+				object.position.set(-400, 100, 200);
+				object.name = "testOBJ001";
+
+				if (!hotspotControl) {
+					object.visible = false;
+				}
+				hotspots.push(object);
+				scene.add(object);
+
+
+				//--------------------------------------------------
+				var geometry = new THREE.PlaneGeometry( 100, 8, 32 );
+				var material = new THREE.MeshBasicMaterial( {color: 0x34FFCA, side: THREE.DoubleSide} );
+				material.transparent = true; material.opacity = 0.3;
+				var title_2 = new THREE.Mesh( geometry, material );
+
+				title_2.position.set(-95, 120, -43);
+				title_2.rotation.z = -15*Math.PI/180;
+				title_2.rotation.x = 90*Math.PI/180;
+
+				hotspots.push(title_2);
+				scene.add(title_2);
+
+				//---------------------------------------------------
+				var title_1;
+				var geometry = new THREE.PlaneGeometry( 100, 8, 32 );
+				var material = new THREE.MeshBasicMaterial( {color: 0x34FFCA, side: THREE.DoubleSide} );
+				material.transparent = true; material.opacity = 0.3;
+				title_1 = new THREE.Mesh( geometry, material );
+
+				title_1.position.set(-60, 120, 73);
+				//title_1.rotation.y = -15*Math.PI/180;
+				title_1.rotation.z = -15*Math.PI/180;
+				title_1.rotation.x = 90*Math.PI/180;
+				hotspots.push(title_1);
+				scene.add( title_1 );
+
+		//------------ End of titles -------------------------------------------------------------
+
+
+		//------------ To other panos ------------------------------------------------------------
+				var door;
+				var geometry = new THREE.PlaneGeometry( 60, 100, 32 );
+				var material = new THREE.MeshBasicMaterial( {color: 0xffffff, side: THREE.DoubleSide} );
+				material.transparent = true; material.opacity = 0.5;
+				var door = new THREE.Mesh( geometry, material );
+
+				door.position.set(90, 30, 400);
+				door.rotation.y = 15*Math.PI/180;
+				scene.add( door );
+
+				//-----------------------------------------------------
+
+				var door_right;
+				var geometry = new THREE.PlaneGeometry( 60, 100, 32 );
+				var material = new THREE.MeshBasicMaterial( {color: 0xffffff, side: THREE.DoubleSide} );
+				material.transparent = true; material.opacity = 0.5;
+				var door_right = new THREE.Mesh( geometry, material );
+
+				door_right.position.set(-120, 30, -400);
+				door_right.rotation.y = 15*Math.PI/180;
+				scene.add( door_right );
+
+				//------------------------------------------------------
+
+				var material = new THREE.MeshBasicMaterial( { color: 0xffaa00, transparent: true, blending: THREE.AdditiveBlending } ) ;
+
+				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
+				var tele_left = new THREE.Mesh( new  THREE.SphereGeometry(15, 20, 10), material);
+				tele_left.position.set(70, -150, 400);
+
+
+
+				scene.add(tele_left);
+
+				var tele_right = new THREE.Mesh( new  THREE.SphereGeometry(15, 20, 10), material);
+				tele_right.position.set(-150, -150, -400);
+
+
+
+				scene.add(tele_right);
+
+
+
+
+
+		//--------------- End of teleporting spots -----------------------------------------------
+
+				renderer = new THREE.WebGLRenderer();
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				container.appendChild( renderer.domElement );
+
+        //controls
+
+        deviceOrientation = false;
+
+
+        orbitControl = new THREE.OrbitControls(camera, renderer.domElement);
+
+        orbitControl.target.set(
+          camera.position.x + 0.1,
+          camera.position.y,
+          camera.position.z
+        );
+
+        controls = new THREE.DeviceOrientationControls( camera );
+
+//----------------------------------------------------------------------------------------
+				//dom events
+			domEvents = new THREEx.DomEvents(camera, renderer.domElement);
+
+
+
+			domEvents.addEventListener(object, 'click', function(event){
+					$('#modal1').modal('toggle');
+				}, false);
+
+
+
+			domEvents.addEventListener(door, 'click', function(event){
+						//console.log('click on the door!!', object);
+						window.open('panorama_5.html','_self');
+				}
+			);
+
+			domEvents.addEventListener(door, 'mouseover', function(event){
+				door.material.opacity = 0.8;
+			});
+
+			domEvents.addEventListener(door, 'mouseout', function(event){
+				door.material.opacity = 0.5;
+			});
+
+			domEvents.addEventListener(door_right, 'click', function(event){
+					console.log('click on the door!!', object);
+					window.open('panorama_3.html','_self');
+				}
+			);
+
+			domEvents.addEventListener(door_right, 'mouseover', function(event){
+				door_right.material.opacity = 0.8;
+			});
+
+ 			domEvents.addEventListener(door_right, 'mouseout', function(event){
+				door_right.material.opacity = 0.5;
+			});
+
+			domEvents.addEventListener(title_1, 'click', function(event){
+					$('#modal1').modal('toggle');
+				}, false);
+
+			domEvents.addEventListener(title_1, 'mouseover', function(event){
+				title_1.material.opacity = 0.5;
+			});
+
+			domEvents.addEventListener(title_1, 'mouseout', function(event){
+				title_1.material.opacity = 0.3;
+			});
+
+			domEvents.addEventListener(title_2, 'click', function(event){
+					$('#modal1').modal('toggle');
+				}, false);
+
+			domEvents.addEventListener(title_2, 'mouseover', function(event){
+				title_2.material.opacity = 0.5;
+			});
+
+			domEvents.addEventListener(title_2, 'mouseout', function(event){
+				title_2.material.opacity = 0.3;
+			});
+
+			domEvents.addEventListener(tele_left, 'click', function(event){
+						//console.log('click on the door!!', object);
+						//tele_left.material.color = 0x4091FF;
+						window.open('panorama_5.html','_self');
+				}
+			);
+
+			domEvents.addEventListener(tele_right, 'click', function(event){
+						//console.log('click on the door!!', object);
+						//tele_left.material.color = 0x4091FF;
+						window.open('panorama_3.html','_self');
+				}
+			);
+//----------------------------------------------------------------------------------------
+
+
+				window.addEventListener( 'resize', onWindowResize, false );
+				// document.addEventListener('mousemove', onDocumentMouseDown, false);
+				//document.addEventListener('touchstart', onDocumentTouchStart, false);
+
+				//console.log("end of init camera is " + camera.position);
+
+
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+        if(deviceOrientation){
+          controls.update();
+        }else {
+
+          orbitControl.update();
+
+					//console.log(camera.rotation);
+					//console.log(camera.target);
+
+        }
+
+				update();
+
+			}
+
+			function update() {
+
+				if (hotspotControl) {
+					for (var i = 0; i < hotspots.length; i++) {
+						hotspots[i].visible = true;
+					}
+					//object.visible = true;
+
+				}else {
+					for (var i = 0; i < hotspots.length; i++) {
+						hotspots[i].visible = false;
+					}
+					//object.visible = false;
+					// $(".popup").hide();
+				}
+				// if (count == 0) {
+				//
+				// 	camera.rotation.x = -90 * Math.PI / 180;
+				// 	camera.rotation.y = 330 * Math.PI / 180;
+				// 	camera.rotation.z = -60 * Math.PI / 180;
+				// 	console.log("count = 0, " + camera.rotation);
+				// 	count++;
+				// }
+
+				renderer.render( scene, camera );
+
+			}
+
+		</script>
+
+		<script>
+		//this script handles all the audio/img events!
+		$('#modal1').on('shown.bs.modal', function(e){
+			var audio1 = document.getElementById('audio1');
+			audio1.play();
+		});
+
+		$('#modal1').on('hide.bs.modal', function(e){
+			var audio1 = document.getElementById('audio1');
+			audio1.pause();
+		});
+
+		</script>
+	</body>
+</html>
