@@ -92,7 +92,7 @@
     		<div class="modal-content">
       		<div class="modal-header">
         		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        		<h4 class="modal-title" id="myModalLabel">宁公遇题记的发现</h4>
+        		<h4 class="modal-title" id="myModalLabel"></h4>
       		</div>
       		<div class="modal-body" align="center">
 						<img src="img/4/details/title3.jpg" height="400px">
@@ -285,7 +285,7 @@
 				//------------------------------------------------------
 
 				var material = new THREE.MeshBasicMaterial( { color: 0xffaa00, transparent: true, blending: THREE.AdditiveBlending } ) ;
-
+				material.opacity = 0.5;
 				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
 				var tele_left = new THREE.Mesh( new  THREE.SphereGeometry(15, 20, 10), material);
 				tele_left.position.set(70, -150, 400);
@@ -398,12 +398,30 @@
 				}
 			);
 
+			domEvents.addEventListener(tele_left, 'mouseover', function(event){
+				tele_left.material.opacity = 0.8;
+			});
+
+			domEvents.addEventListener(tele_left, 'mouseout', function(event){
+				tele_left.material.opacity = 0.5;
+			});
+
+
 			domEvents.addEventListener(tele_right, 'click', function(event){
 						//console.log('click on the door!!', object);
 						//tele_left.material.color = 0x4091FF;
 						window.open('panorama_3.html','_self');
 				}
 			);
+
+			domEvents.addEventListener(tele_right, 'mouseover', function(event){
+				tele_right.material.opacity = 0.8;
+			});
+
+			domEvents.addEventListener(tele_right, 'mouseout', function(event){
+				tele_right.material.opacity = 0.5;
+			});
+
 //----------------------------------------------------------------------------------------
 
 
