@@ -74,6 +74,31 @@
 							</audio>
 						</div>
 
+						<p>（北次间北缝梁架明四椽栿）功德主故右軍中尉王 佛殿主上都送供女弟子甯公遇</p>
+
+        	...
+      		</div>
+      		<div class="modal-footer">
+        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      		</div>
+    		</div>
+  		</div>
+		</div>
+		<!-- ================= End of Modal 1 ========================================================= -->
+
+		<!-- ================= Modal 2 for title 2 ==================================================== -->
+		<div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  		<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        		<h4 class="modal-title" id="myModalLabel">宁公遇题记的发现</h4>
+      		</div>
+      		<div class="modal-body" align="center">
+						<img src="img/4/details/title3.jpg" height="400px">
+
+						<p>3.（明间南缝梁架明四椽栿）奉為國敬造佛殿柒間伏願龍天歡喜歲稔時康雨順風調干戈休息十方施主願轉法輪法界有情悉願成佛</p>
+
         	...
       		</div>
       		<div class="modal-footer">
@@ -235,27 +260,27 @@
 
 
 		//------------ To other panos ------------------------------------------------------------
-				var door;
-				var geometry = new THREE.PlaneGeometry( 60, 100, 32 );
-				var material = new THREE.MeshBasicMaterial( {color: 0xffffff, side: THREE.DoubleSide} );
-				material.transparent = true; material.opacity = 0.5;
-				var door = new THREE.Mesh( geometry, material );
-
-				door.position.set(90, 30, 400);
-				door.rotation.y = 15*Math.PI/180;
-				scene.add( door );
-
-				//-----------------------------------------------------
-
-				var door_right;
-				var geometry = new THREE.PlaneGeometry( 60, 100, 32 );
-				var material = new THREE.MeshBasicMaterial( {color: 0xffffff, side: THREE.DoubleSide} );
-				material.transparent = true; material.opacity = 0.5;
-				var door_right = new THREE.Mesh( geometry, material );
-
-				door_right.position.set(-120, 30, -400);
-				door_right.rotation.y = 15*Math.PI/180;
-				scene.add( door_right );
+				// var door;
+				// var geometry = new THREE.PlaneGeometry( 60, 100, 32 );
+				// var material = new THREE.MeshBasicMaterial( {color: 0xffffff, side: THREE.DoubleSide} );
+				// material.transparent = true; material.opacity = 0.5;
+				// var door = new THREE.Mesh( geometry, material );
+				//
+				// door.position.set(90, 30, 400);
+				// door.rotation.y = 15*Math.PI/180;
+				// scene.add( door );
+				//
+				// //-----------------------------------------------------
+				//
+				// var door_right;
+				// var geometry = new THREE.PlaneGeometry( 60, 100, 32 );
+				// var material = new THREE.MeshBasicMaterial( {color: 0xffffff, side: THREE.DoubleSide} );
+				// material.transparent = true; material.opacity = 0.5;
+				// var door_right = new THREE.Mesh( geometry, material );
+				//
+				// door_right.position.set(-120, 30, -400);
+				// door_right.rotation.y = 15*Math.PI/180;
+				// scene.add( door_right );
 
 				//------------------------------------------------------
 
@@ -314,33 +339,33 @@
 
 
 
-			domEvents.addEventListener(door, 'click', function(event){
-						//console.log('click on the door!!', object);
-						window.open('panorama_5.html','_self');
-				}
-			);
-
-			domEvents.addEventListener(door, 'mouseover', function(event){
-				door.material.opacity = 0.8;
-			});
-
-			domEvents.addEventListener(door, 'mouseout', function(event){
-				door.material.opacity = 0.5;
-			});
-
-			domEvents.addEventListener(door_right, 'click', function(event){
-					console.log('click on the door!!', object);
-					window.open('panorama_3.html','_self');
-				}
-			);
-
-			domEvents.addEventListener(door_right, 'mouseover', function(event){
-				door_right.material.opacity = 0.8;
-			});
-
- 			domEvents.addEventListener(door_right, 'mouseout', function(event){
-				door_right.material.opacity = 0.5;
-			});
+			// domEvents.addEventListener(door, 'click', function(event){
+			// 			//console.log('click on the door!!', object);
+			// 			window.open('panorama_5.html','_self');
+			// 	}
+			// );
+			//
+			// domEvents.addEventListener(door, 'mouseover', function(event){
+			// 	door.material.opacity = 0.8;
+			// });
+			//
+			// domEvents.addEventListener(door, 'mouseout', function(event){
+			// 	door.material.opacity = 0.5;
+			// });
+			//
+			// domEvents.addEventListener(door_right, 'click', function(event){
+			// 		console.log('click on the door!!', object);
+			// 		window.open('panorama_3.html','_self');
+			// 	}
+			// );
+			//
+			// domEvents.addEventListener(door_right, 'mouseover', function(event){
+			// 	door_right.material.opacity = 0.8;
+			// });
+			//
+ 		// 	domEvents.addEventListener(door_right, 'mouseout', function(event){
+			// 	door_right.material.opacity = 0.5;
+			// });
 
 			domEvents.addEventListener(title_1, 'click', function(event){
 					$('#modal1').modal('toggle');
@@ -355,7 +380,7 @@
 			});
 
 			domEvents.addEventListener(title_2, 'click', function(event){
-					$('#modal1').modal('toggle');
+					$('#modal2').modal('toggle');
 				}, false);
 
 			domEvents.addEventListener(title_2, 'mouseover', function(event){
@@ -433,8 +458,6 @@
 					for (var i = 0; i < hotspots.length; i++) {
 						hotspots[i].visible = false;
 					}
-					//object.visible = false;
-					// $(".popup").hide();
 				}
 				// if (count == 0) {
 				//
