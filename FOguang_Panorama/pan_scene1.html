@@ -54,6 +54,9 @@
         }*/
 		</style>
 		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/gallery.prefixed.css">
+		<link rel="stylesheet" href="css/gallery.theme.css">
 		<!-- <link rel="stylesheet" href="css/SSUhtml5audio.css"> -->
 	</head>
 	<body>
@@ -103,7 +106,31 @@
         		<h4 class="modal-title" id="myModalLabel">宁公遇题记的发现</h4>
       		</div>
       		<div class="modal-body" align="center">
-						<img src="img/4/details/title1.jpg" height="400px">
+
+						<div id="modal1_img" class="gallery autoplay items-3">
+							<div id="item-1" class="control-operator"></div>
+							<div id="item-2" class="control-operator"></div>
+							<div id="item-2" class="control-operator"></div>
+
+							<figure class="item">
+								<img src="img/4/details/m1_1.jpg" height="400px">
+					    </figure>
+
+					    <figure class="item">
+								<img src="img/4/details/m1_2.jpg" height="400px">
+					    </figure>
+
+					    <figure class="item">
+								<img src="img/4/details/title1.jpg" height="400px">
+					    </figure>
+
+					    <div class="controls">
+					      <a href="#item-1" class="control-button">•</a>
+					      <a href="#item-2" class="control-button">•</a>
+					      <a href="#item-3" class="control-button">•</a>
+					    </div>
+
+						</div>
 
 						<div id="audio1_placeholder">
 							<audio id="audio1" controls="controls">
@@ -471,7 +498,7 @@
 			domEvents.addEventListener(tele_right, 'click', function(event){
 						//console.log('click on the door!!', object);
 						//tele_left.material.color = 0x4091FF;
-						window.open('panorama_3.html','_self');
+						window.open('pan_scene2.html','_self');
 				}
 			);
 

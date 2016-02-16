@@ -285,7 +285,7 @@
         scene.add(hemi);
 
 				var material = new THREE.MeshBasicMaterial( { color:0xFF3301, transparent: true, blending: THREE.AdditiveBlending } ) ;
-				material.opacity = 0.3;
+				material.opacity = 0.7;
 
 				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
 				object = new THREE.Mesh( new  THREE.SphereGeometry(10, 20, 10), material);
@@ -359,7 +359,7 @@
 				material.opacity = 0.5;
 				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
 				var tele_left = new THREE.Mesh( new  THREE.SphereGeometry(15, 20, 10), material);
-				tele_left.position.set(70, -150, 400);
+				tele_left.position.set(-350, -150, 300);
 
 
 
@@ -409,11 +409,11 @@
 				}, false);
 
 				domEvents.addEventListener(object, 'mouseover', function(event){
-					object.material.opacity = 0.5;
+					object.material.opacity = 0.9;
 				});
 
 				domEvents.addEventListener(object, 'mouseout', function(event){
-					object.material.opacity = 0.3;
+					object.material.opacity = 0.7;
 				});
 
 
@@ -446,7 +446,7 @@
 			domEvents.addEventListener(tele_left, 'click', function(event){
 						//console.log('click on the door!!', object);
 						//tele_left.material.color = 0x4091FF;
-						window.open('panorama_5.html','_self');
+						window.open('pan_scene1.html','_self');
 				}
 			);
 
