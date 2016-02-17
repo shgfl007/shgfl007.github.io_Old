@@ -110,7 +110,7 @@
 						<div id="modal1_img" class="gallery autoplay items-3">
 							<div id="item-1" class="control-operator"></div>
 							<div id="item-2" class="control-operator"></div>
-							<div id="item-2" class="control-operator"></div>
+							<div id="item-3" class="control-operator"></div>
 
 							<figure class="item">
 								<img src="img/4/details/m1_1.jpg" height="400px">
@@ -641,6 +641,21 @@
 			//init text area
 			if (m1_count==0) {
 				$('div#m1_text_holder').html("<p><strong>林徽因：</strong>我们在东大殿工作了几天，才看见殿内梁底隐约有墨迹，且有字的左右共四梁，这个发现对我们大家有如电击一般，没有比写在梁柱上或刻在石头上的日期更让人喜欢的东西了。但字迹被土朱所掩盖，梁底离地两丈多高，光线又不足，各梁的文字颇难确辨，审视了许久，各人凭字迹的目力，揣拟再三，才认出官职一二，而不能辨别人名。我素来远视，独见“女弟子宁公遇”之名，深怕有误，又详细检查阶前经幢上的姓名。</p>");
+
+				//int gallery
+				$('div#modal1_img').attr({
+					"class" : "gallery autoplay items-3"
+				});
+				$('div#modal1_img').html(
+					'<div id="item-1" class="control-operator"></div>'+
+					'<div id="item-2" class="control-operator"></div>'+
+					'<div id="item-3" class="control-operator"></div>'+
+					'<figure class="item"><img src="img/4/details/m1_1.jpg" height="400px"></figure>'+
+					'<figure class="item"><img src="img/4/details/m1_2.jpg" height="400px"></figure>'+
+					'<figure class="item"><img src="img/4/details/title1.jpg" height="400px"></figure>'+
+					'<div class="controls"><a href="#item-1" class="control-button">•</a>'+
+					'<a href="#item-2" class="control-button">•</a><a href="#item-3" class="control-button">•</a></div>'
+				);
 			}
 
 
@@ -661,6 +676,17 @@
 					m1_count++;
 					audio1.load();
 					audio1.play();
+					$('div#modal1_img').attr({
+						"class" : "gallery autoplay items-2"
+					});
+					$('div#modal1_img').html(
+						'<div id="item-1" class="control-operator"></div>'+
+						'<div id="item-2" class="control-operator"></div>'+
+						'<figure class="item"><img src="img/4/details/m1_4.jpg" height="400px"></figure>'+
+						'<figure class="item"><img src="img/4/details/m1_5.jpg" height="400px"></figure>'+
+						'<div class="controls"><a href="#item-1" class="control-button">•</a>'+
+						'<a href="#item-2" class="control-button">•</a></div>'
+					);
 					$('div#m1_text_holder').html("<p><strong>林徽因：</strong>幢上除有官职者外，果然也有“女弟子宁公遇”的字样，称为“佛殿主”，名列在诸尼之前，“佛殿主”之名即写在梁上，又刻在经幢上，则经幢的建造应当是与大殿同时的，即使不是同年兴建，经幢的建立也该是在大殿完工的时候。东大殿的年代因此就可以推出了。</p>");
 
 				}else if (m1_count == 1) {
@@ -677,6 +703,26 @@
 					m1_count++;
 					audio1.load();
 					audio1.play();
+
+					$('div#modal1_img').attr({
+						"class" : "gallery autoplay items-5"
+					});
+					$('div#modal1_img').html(
+						'<div id="item-1" class="control-operator"></div>'+
+						'<div id="item-2" class="control-operator"></div>'+
+						'<div id="item-3" class="control-operator"></div>'+
+						'<div id="item-4" class="control-operator"></div>'+
+						'<div id="item-5" class="control-operator"></div>'+
+						'<figure class="item"><img src="img/4/details/m1_1.jpg" height="400px"></figure>'+
+						'<figure class="item"><img src="img/4/details/m1_2.jpg" height="400px"></figure>'+
+						'<figure class="item"><img src="img/4/details/title1.jpg" height="400px"></figure>'+
+						'<figure class="item"><img src="img/4/details/m1_4.jpg" height="400px"></figure>'+
+						'<figure class="item"><img src="img/4/details/m1_5.jpg" height="400px"></figure>'+
+						'<div class="controls"><a href="#item-1" class="control-button">•</a>'+
+						'<a href="#item-2" class="control-button">•</a><a href="#item-3" class="control-button">•</a>'+
+						'<a href="#item-4" class="control-button">•</a><a href="#item-5" class="control-button">•</a></div>'
+					);
+
 					$('div#m1_text_holder').html("<p><strong>林徽因：</strong>为求得题字的全文，我们当时就请寺僧入村去募工搭架，想将梁下的土朱洗脱，一看究竟。不料村僻人稀，和尚去了一整天，仅得老农二人，对这种工作完全没有经验，筹划了一天，才支起一架。我们已急不能待地把布单撕开浸水相互传递，但是也做了半天才洗出两道梁。土朱一着了水，墨迹就骤然显出，但是水干之后，墨色又淡下去，又隐约不可见了。费了三天时间，才读完题字原文。可喜的是字体宛然唐风，无可置疑。</p>");
 
 				}
