@@ -177,7 +177,16 @@
 							</video>
 						</div>
 
+						<div id="m3_audio_sec">
+							<audio id="m3_audio">
+								<source src="audio/3/m3.mp3" type="audio/mp3">
+								<source src="audio/3/m3.ogg" type="audio/ogg">
+								<source src="audio/3/m3.wav" type="audio/wav">
+							</audio>
+						</div>
 
+
+						<p> 供养菩萨皆为一足蹲一足跪，这种形式的供养菩萨，在国内已不多见。除敦煌石窟外，仅见于山西大同华严寺薄迦教藏殿。</p>
 						<p>该尊供养菩萨塑像蹲坐于莲座上，头戴花冠，项佩璎珞，
 							飘带自两肩垂下，腰带紧束腹部。菩萨面相丰满圆润，肌肤细腻，
 							秀美弯曲，眼睑低垂。背稍前倾，右臂弯曲，右手执蓝底白花方巾一块，
@@ -720,6 +729,8 @@
 			var video = document.getElementById('modal3_video');
 			video.load();
 			video.play();
+			var audio = document.getElementById('m3_audio');
+			audio.play();
 			bgm.pause();
 
 		});
@@ -727,6 +738,8 @@
 		$('#modal3').on('hide.bs.modal', function(e){
 			var video = document.getElementById('modal3_video');
 			video.pause();
+			var audio = document.getElementById('m3_audio');
+			audio.pause();
 			bgm.play();
 
 		});
