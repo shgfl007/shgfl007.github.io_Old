@@ -296,6 +296,39 @@
 		</div>
 		<!-- ================= End of Modal 5 ========================================================= -->
 
+		<!-- ================= Modal 6 for hotspot 4 ==================================================== -->
+		<div class="modal fade" id="modal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel">两侧天王</h4>
+					</div>
+					<div class="modal-body" align="center">
+						<!-- <img src="img/4/details/title3.jpg" height="400px"> -->
+
+						<div id="audio6_placeholder">
+							<audio id="audio6" controls="controls">
+								<source src="audio/3/m7.mp3" type="audio/mp3">
+								<source src="audio/3/m7.ogg" type="audio/ogg">
+								<source src="audio/3/m7.wav" type="audio/wav">
+							</audio>
+						</div>
+
+
+
+						<p>两侧天王像森严雄劲，极为生动；他们的甲胄衣饰与唐墓出土的武俑多相似处，也是少见的实例。</p>
+
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- ================= End of Modal 6 ========================================================= -->
+
 		<script src="js/three.min.js"></script>
 		<script src="js/jquery.js"></script>
 		<script src="js/bootstrap.js"></script>
@@ -403,23 +436,21 @@
 				hemi.position.set( 1, 1, 1 );
         scene.add(hemi);
 
-				var material = new THREE.MeshBasicMaterial( { color:0x34FFCA, transparent: true, blending: THREE.AdditiveBlending } ) ;
-				material.opacity = 0.3;
+				var material = new THREE.MeshBasicMaterial( { color:0xFF3301, transparent: true, blending: THREE.AdditiveBlending } ) ;
+				material.opacity = 0.7;
 
 				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
 				object = new THREE.Mesh( new  THREE.SphereGeometry(7, 20, 10), material);
 				object.position.set(-170, 180, -258);
 				object.name = "testOBJ001";
 
-				if (!hotspotControl) {
-					object.visible = false;
-				}
+
 				hotspots.push(object);
 				scene.add(object);
 
 				//-------------------------------------------------------
-				var material = new THREE.MeshBasicMaterial( { color:0x34FFCA, transparent: true, blending: THREE.AdditiveBlending } ) ;
-				material.opacity = 0.3;
+				var material = new THREE.MeshBasicMaterial( { color:0xFF3301, transparent: true, blending: THREE.AdditiveBlending } ) ;
+				material.opacity = 0.7;
 
 				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
 				var hotspot2 = new THREE.Mesh( new  THREE.SphereGeometry(10, 20, 10), material);
@@ -434,8 +465,8 @@
 
 
 				//-------------------------------------------------------
-				var material = new THREE.MeshBasicMaterial( { color:0x34FFCA, transparent: true, blending: THREE.AdditiveBlending } ) ;
-				material.opacity = 0.3;
+				var material = new THREE.MeshBasicMaterial( { color:0xFF3301, transparent: true, blending: THREE.AdditiveBlending } ) ;
+				material.opacity = 0.7;
 
 				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
 				var hotspot3 = new THREE.Mesh( new  THREE.SphereGeometry(8, 20, 10), material);
@@ -450,6 +481,24 @@
 
 
 				//--------------------------------------------------
+
+				var material = new THREE.MeshBasicMaterial( { color:0xFF3301, transparent: true, blending: THREE.AdditiveBlending } ) ;
+				material.opacity = 0.7;
+
+				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
+				var hotspot4 = new THREE.Mesh( new  THREE.SphereGeometry(7, 20, 10), material);
+				hotspot4.position.set(-350, 150, -18);
+				hotspot4.name = "hotspot4";
+
+				// if (!hotspotControl) {
+				// 	hotspot2.visible = false;
+				// }
+				hotspots.push(hotspot4);
+				scene.add(hotspot4);
+
+
+				//--------------------------------------------------
+
 				var geometry = new THREE.PlaneGeometry( 100, 8, 32 );
 				var material = new THREE.MeshBasicMaterial( {color: 0x34FFCA, side: THREE.DoubleSide, blending: THREE.AdditiveBlending} );
 				material.transparent = true; material.opacity = 0.3;
@@ -559,11 +608,11 @@
 				}, false);
 
 				domEvents.addEventListener(object, 'mouseover', function(event){
-					object.material.opacity = 0.5;
+					object.material.opacity = 1;
 				});
 
 				domEvents.addEventListener(object, 'mouseout', function(event){
-					object.material.opacity = 0.3;
+					object.material.opacity = 0.7;
 				});
 
 				domEvents.addEventListener(hotspot2, 'click', function(event){
@@ -571,11 +620,11 @@
 					}, false);
 
 				domEvents.addEventListener(hotspot2, 'mouseover', function(event){
-						hotspot2.material.opacity = 0.5;
+						hotspot2.material.opacity = 1;
 				});
 
 				domEvents.addEventListener(hotspot2, 'mouseout', function(event){
-						hotspot2.material.opacity = 0.3;
+						hotspot2.material.opacity = 0.7;
 				});
 
 				domEvents.addEventListener(hotspot3, 'click', function(event){
@@ -583,11 +632,23 @@
 					}, false);
 
 				domEvents.addEventListener(hotspot3, 'mouseover', function(event){
-						hotspot3.material.opacity = 0.5;
+						hotspot3.material.opacity = 1;
 				});
 
 				domEvents.addEventListener(hotspot3, 'mouseout', function(event){
-						hotspot3.material.opacity = 0.3;
+						hotspot3.material.opacity = 0.7;
+				});
+
+				domEvents.addEventListener(hotspot4, 'click', function(event){
+						$('#modal6').modal('toggle');
+					}, false);
+
+				domEvents.addEventListener(hotspot4, 'mouseover', function(event){
+						hotspot4.material.opacity = 1;
+				});
+
+				domEvents.addEventListener(hotspot4, 'mouseout', function(event){
+						hotspot4.material.opacity = 0.7;
 				});
 
 
@@ -961,6 +1022,20 @@
 
 		$('#modal5').on('hide.bs.modal', function(e){
 			var audio = document.getElementById('m5_audio');
+			audio.pause();
+
+			bgm.play();
+
+		});
+
+		$('#modal6').on('shown.bs.modal', function(e){
+			var audio = document.getElementById('audio6');
+			audio.play();
+			bgm.pause();
+		});
+
+		$('#modal6').on('hide.bs.modal', function(e){
+			var audio = document.getElementById('audio6');
 			audio.pause();
 
 			bgm.play();

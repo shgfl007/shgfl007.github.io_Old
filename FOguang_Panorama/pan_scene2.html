@@ -65,12 +65,13 @@
 		<div id="info">
       <button type="button" class="btn btn-danger" id="changeControls" onclick="toggleControls()">Change Controls</button>
 			<button type="button" class="btn btn-danger" id="hotspotbutton" onclick="toggleHotspots()">Show/Hide Hotspots</button>
-
-				<button type="button" class="btn btn-info btn-xs" id="songPlayPause" onclick="playPause('bgm1')">Play/Pause</button>
 			<!-- 	<button type="button" class="btn btn-warning btn-xs" id="songPlayPause" onclick="playPause('n1')">Start/Pause intro</button> -->
 
 			<!-- <div id="songPlayPause" onclick="playPause('song')"></div> -->
 			<!-- <div class="popup"><div class="text"></div></div> -->
+		</div>
+		<div id="info2">
+			<button type="button" class="btn btn-info btn-xs" id="songPlayPause" onclick="playPause('bgm1')">Play/Pause</button>
 		</div>
 
 
@@ -274,6 +275,75 @@
 		</div>
 		<!-- ================= End of Modal 5 ========================================================= -->
 
+		<!-- ================= Modal 6 for hotspot 4 ==================================================== -->
+		<div class="modal fade" id="modal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  		<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        		<h4 class="modal-title" id="myModalLabel">普贤菩萨</h4>
+      		</div>
+      		<div class="modal-body" align="center">
+						<!-- <img src="img/4/details/title3.jpg" height="400px"> -->
+
+						<div id="audio6_placeholder">
+							<audio id="audio6" controls="controls">
+								<source src="audio/3/m6.mp3" type="audio/mp3">
+								<source src="audio/3/m6.ogg" type="audio/ogg">
+								<source src="audio/3/m6.wav" type="audio/wav">
+							</audio>
+						</div>
+
+
+
+						<p>普贤菩萨端庄俊秀，双眉清秀弯曲，两眼含神，脖戴项圈，胸垂珠饰，
+							手执经卷，显示威严之势。普贤菩萨结半跏趺坐于白象背上，白象垂鼻弯曲，
+							象牙外伸，俯首帖耳，四蹄各踏一朵莲花。</p>
+
+
+      		</div>
+      		<div class="modal-footer">
+        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      		</div>
+    		</div>
+  		</div>
+		</div>
+		<!-- ================= End of Modal 6 ========================================================= -->
+
+
+		<!-- ================= Modal 7 for hotspot 5 ==================================================== -->
+		<div class="modal fade" id="modal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  		<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        		<h4 class="modal-title" id="myModalLabel">两侧天王</h4>
+      		</div>
+      		<div class="modal-body" align="center">
+						<!-- <img src="img/4/details/title3.jpg" height="400px"> -->
+
+						<div id="audio7_placeholder">
+							<audio id="audio7" controls="controls">
+								<source src="audio/3/m7.mp3" type="audio/mp3">
+								<source src="audio/3/m7.ogg" type="audio/ogg">
+								<source src="audio/3/m7.wav" type="audio/wav">
+							</audio>
+						</div>
+
+
+
+						<p>两侧天王像森严雄劲，极为生动；他们的甲胄衣饰与唐墓出土的武俑多相似处，也是少见的实例。</p>
+
+
+      		</div>
+      		<div class="modal-footer">
+        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      		</div>
+    		</div>
+  		</div>
+		</div>
+		<!-- ================= End of Modal 7 ========================================================= -->
+
 
 		<script src="js/three.min.js"></script>
 		<script src="js/jquery.js"></script>
@@ -390,9 +460,7 @@
 				object.position.set(-80, -40, -280);
 				object.name = "testOBJ001";
 
-				if (!hotspotControl) {
-					object.visible = false;
-				}
+
 				hotspots.push(object);
 				scene.add(object);
 
@@ -405,9 +473,7 @@
 				hotspot2.position.set(180, 40, -300);
 				hotspot2.name = "hotspot2";
 
-				if (!hotspotControl) {
-					hotspot2.visible = false;
-				}
+
 				hotspots.push(hotspot2);
 				scene.add(hotspot2);
 
@@ -420,14 +486,41 @@
 				hotspot3.position.set(-300, 280, -280);
 				hotspot3.name = "hotspot3";
 
-				if (!hotspotControl) {
-					hotspot3.visible = false;
-				}
 				hotspots.push(hotspot3);
 				scene.add(hotspot3);
 
+				//----------------------------------------------------------------------------
+
+				var material = new THREE.MeshBasicMaterial( { color:0xFF3301, transparent: true, blending: THREE.AdditiveBlending } ) ;
+				material.opacity = 0.7;
+
+				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
+				var hotspot4 = new THREE.Mesh( new  THREE.SphereGeometry(8, 20, 10), material);
+				hotspot4.position.set(100, 150, -380);
+				hotspot4.name = "hotspot4";
+
+
+				hotspots.push(hotspot4);
+				scene.add(hotspot4);
+
 
 				//--------------------------------------------------
+
+				var material = new THREE.MeshBasicMaterial( { color:0xFF3301, transparent: true, blending: THREE.AdditiveBlending } ) ;
+				material.opacity = 0.7;
+
+				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
+				var hotspot5 = new THREE.Mesh( new  THREE.SphereGeometry(7.5, 20, 10), material);
+				hotspot5.position.set(230, 150, -250);
+				hotspot5.name = "hotspot5";
+
+
+				hotspots.push(hotspot5);
+				scene.add(hotspot5);
+
+
+				//--------------------------------------------------
+
 				var geometry = new THREE.PlaneGeometry( 100, 8, 32 );
 				var material = new THREE.MeshBasicMaterial( {color: 0x34FFCA, side: THREE.DoubleSide, blending: THREE.AdditiveBlending} );
 				material.transparent = true; material.opacity = 0.3;
@@ -566,6 +659,30 @@
 
 				domEvents.addEventListener(hotspot3, 'mouseout', function(event){
 							hotspot3.material.opacity = 0.7;
+				});
+
+				domEvents.addEventListener(hotspot4, 'click', function(event){
+							$('#modal6').modal('toggle');
+					}, false);
+
+				domEvents.addEventListener(hotspot4, 'mouseover', function(event){
+							hotspot4.material.opacity = 1;
+				});
+
+				domEvents.addEventListener(hotspot4, 'mouseout', function(event){
+							hotspot4.material.opacity = 0.7;
+				});
+
+				domEvents.addEventListener(hotspot5, 'click', function(event){
+							$('#modal7').modal('toggle');
+					}, false);
+
+				domEvents.addEventListener(hotspot5, 'mouseover', function(event){
+							hotspot5.material.opacity = 1;
+				});
+
+				domEvents.addEventListener(hotspot5, 'mouseout', function(event){
+							hotspot5.material.opacity = 0.7;
 				});
 
 
@@ -872,6 +989,36 @@
 
 		$('#modal5').on('hide.bs.modal', function(e){
 			var audio = document.getElementById('audio5');
+			audio.pause();
+			bgm.play();
+
+		});
+
+		$('#modal6').on('shown.bs.modal', function(e){
+			var audio = document.getElementById('audio6');
+			audio.load();
+			audio.play();
+			bgm.pause();
+
+		});
+
+		$('#modal6').on('hide.bs.modal', function(e){
+			var audio = document.getElementById('audio6');
+			audio.pause();
+			bgm.play();
+
+		});
+
+		$('#modal7').on('shown.bs.modal', function(e){
+			var audio = document.getElementById('audio7');
+			audio.load();
+			audio.play();
+			bgm.pause();
+
+		});
+
+		$('#modal7').on('hide.bs.modal', function(e){
+			var audio = document.getElementById('audio7');
 			audio.pause();
 			bgm.play();
 
