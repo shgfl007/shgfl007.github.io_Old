@@ -188,34 +188,7 @@
 					</div>
 					<div class="modal-body" align="center">
 
-						<div id="modal4_img" class="gallery autoplay items-3">
-							<div id="item-1" class="control-operator"></div>
-							<div id="item-2" class="control-operator"></div>
-							<div id="item-3" class="control-operator"></div>
-							<div id="item-4" class="control-operator"></div>
-
-							<figure class="item">
-								<img src="img/5/details/wp/001.jpg" height="400px">
-							</figure>
-
-							<figure class="item">
-								<img src="img/5/details/wp/002.jpg" height="400px">
-							</figure>
-
-							<figure class="item">
-								<img src="img/5/details/wp/003.jpg" height="400px">
-							</figure>
-
-							<figure class="item">
-								<img src="img/5/details/wp/004.jpg" height="400px">
-							</figure>
-
-							<div class="controls">
-								<a href="#item-1" class="control-button">•</a>
-								<a href="#item-2" class="control-button">•</a>
-								<a href="#item-3" class="control-button">•</a>
-								<a href="#item-3" class="control-button">•</a>
-							</div>
+						<div id="modal4_img">
 
 						</div>
 
@@ -721,9 +694,11 @@
 
 
 			audio.onended = function(){
-				var isSupp0 = audio1.canPlayType("audio/mpeg");
-				var isSupp1 = audio1.canPlayType("audio/wav");
+				console.log("audio ended");
+				var isSupp0 = audio.canPlayType("audio/mpeg");
+				var isSupp1 = audio.canPlayType("audio/wav");
 				if (m4_count == 0 ) {
+					alert("m4_count is 0");
 					//load second sound tracking
 					if (isSupp0 === "") {
 						if (isSupp1 === "") {

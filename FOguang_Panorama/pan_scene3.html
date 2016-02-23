@@ -152,14 +152,13 @@
     		<div class="modal-content">
       		<div class="modal-header">
         		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        		<h4 class="modal-title" id="myModalLabel"></h4>
+        		<h4 class="modal-title" id="myModalLabel">明间南缝梁架明四椽栿</h4>
       		</div>
       		<div class="modal-body" align="center">
 						<img src="img/4/details/title3.jpg" height="400px">
 
-						<p>3.（明间南缝梁架明四椽栿）奉為國敬造佛殿柒間伏願龍天歡喜歲稔時康雨順風調干戈休息十方施主願轉法輪法界有情悉願成佛</p>
+						<p>奉為國敬造佛殿柒間伏願龍天歡喜歲稔時康雨順風調干戈休息十方施主願轉法輪法界有情悉願成佛</p>
 
-        	...
       		</div>
       		<div class="modal-footer">
         		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -866,25 +865,118 @@
 					audio1.load();
 					audio1.play();
 
-					$('div#modal1_img').attr({
-						"class" : "gallery autoplay items-5"
-					});
-					$('div#modal1_img').html(
-						'<div id="item-1" class="control-operator"></div>'+
-						'<div id="item-2" class="control-operator"></div>'+
-						'<div id="item-3" class="control-operator"></div>'+
-						'<div id="item-4" class="control-operator"></div>'+
-						'<div id="item-5" class="control-operator"></div>'+
-						'<figure class="item"><img src="img/4/details/m1_1.jpg" height="400px"></figure>'+
-						'<figure class="item"><img src="img/4/details/m1_2.jpg" height="400px"></figure>'+
-						'<figure class="item"><img src="img/4/details/title1.jpg" height="400px"></figure>'+
-						'<figure class="item"><img src="img/4/details/m1_4.jpg" height="400px"></figure>'+
-						'<figure class="item"><img src="img/4/details/m1_5.jpg" height="400px"></figure>'+
-						'<div class="controls"><a href="#item-1" class="control-button">•</a>'+
-						'<a href="#item-2" class="control-button">•</a><a href="#item-3" class="control-button">•</a>'+
-						'<a href="#item-4" class="control-button">•</a><a href="#item-5" class="control-button">•</a></div>'
-					);
+					// $('div#modal1_img').attr({
+					// 	"class" : "gallery autoplay items-5"
+					// });
+					// $('div#modal1_img').html(
+					// 	'<div id="item-1" class="control-operator"></div>'+
+					// 	'<div id="item-2" class="control-operator"></div>'+
+					// 	'<div id="item-3" class="control-operator"></div>'+
+					// 	'<div id="item-4" class="control-operator"></div>'+
+					// 	'<div id="item-5" class="control-operator"></div>'+
+					// 	'<figure class="item"><img src="img/4/details/m1_1.jpg" height="400px"></figure>'+
+					// 	'<figure class="item"><img src="img/4/details/m1_2.jpg" height="400px"></figure>'+
+					// 	'<figure class="item"><img src="img/4/details/title1.jpg" height="400px"></figure>'+
+					// 	'<figure class="item"><img src="img/4/details/m1_4.jpg" height="400px"></figure>'+
+					// 	'<figure class="item"><img src="img/4/details/m1_5.jpg" height="400px"></figure>'+
+					// 	'<div class="controls"><a href="#item-1" class="control-button">•</a>'+
+					// 	'<a href="#item-2" class="control-button">•</a><a href="#item-3" class="control-button">•</a>'+
+					// 	'<a href="#item-4" class="control-button">•</a><a href="#item-5" class="control-button">•</a></div>'
+					// );
+					$('div#modal1_img').html('<div id="canvas"></div>');
+					$('div#modal1_img').attr({"class":""});
+				//	$('div#modal1_img').html();
+					$('div#canvas').css("background", "url(img/4/details/bkgtitle1.jpg)");
+					$('div#canvas').css("width","231px");$('div#canvas').css("height","400px");
+					(function() {
+    // Creates a new canvas element and appends it as a child
+    // to the parent element, and returns the reference to
+    // the newly created canvas element
 
+		var canvasOffset=$("#canvas").offset();
+		var offsetX=canvasOffset.left;
+		var offsetY=canvasOffset.top;
+
+
+    function createCanvas(parent, width, height) {
+        var canvas = {};
+        canvas.node = document.createElement('canvas');
+        canvas.context = canvas.node.getContext('2d');
+        canvas.node.width = width || 100;
+        canvas.node.height = height || 100;
+        parent.appendChild(canvas.node);
+        return canvas;
+    }
+
+    function init(container, width, height, fillColor) {
+        var canvas = createCanvas(container, width, height);
+        var ctx = canvas.context;
+				//var canvas = document.getElementById("canvas");
+        // define a custom fillCircle method
+				//canvas.addEventListener("touchstart",ontouchstart, false);
+        ctx.fillCircle = function(x, y, radius, fillColor) {
+            this.fillStyle = fillColor;
+            this.beginPath();
+            this.moveTo(x, y);
+            this.arc(x, y, radius, 0, Math.PI * 2, false);
+            this.fill();
+        };
+        ctx.clearTo = function(fillColor) {
+            ctx.fillStyle = fillColor;
+            ctx.fillRect(0, 0, width, height);
+        };
+        ctx.clearTo(fillColor || "#ddd");
+
+        // bind mouse events
+        canvas.node.onmousemove = function(e) {
+            if (!canvas.isDrawing) {
+               return;
+            }
+             var x = e.pageX - this.offsetLeft*1.5;
+             var y = e.pageY - this.offsetTop*6;
+						 console.log(this.offsetLeft);
+						 console.log(this.offsetTop);
+						// var x = e.pageX - offsetX;
+						// var y = e.pageY - offsetY;
+            var radius = 20; // or whatever
+            var fillColor = '#ff0000';
+            ctx.globalCompositeOperation = 'destination-out';
+            ctx.fillCircle(x, y, radius, fillColor);
+        };
+				canvas.node.ontouchmove = function(e) {
+					 e.preventDefault();
+            if (!canvas.isDrawing) {
+               return;
+            }
+            var x = e.pageX - this.offsetLeft*2.8;
+            var y = e.pageY - 100;
+            var radius = 10; // or whatever
+            var fillColor = '#ff0000';
+            ctx.globalCompositeOperation = 'destination-out';
+            ctx.fillCircle(x, y, radius, fillColor);
+        };
+        canvas.node.onmousedown = function(e) {
+            canvas.isDrawing = true;
+        };
+        canvas.node.onmouseup = function(e) {
+            canvas.isDrawing = false;
+        };
+				canvas.node.ontouchstart = function(event){
+					event.preventDefault();
+					console.log("touch start");
+					canvas.isDrawing = true;
+
+				};
+				canvas.node.ontouchend = function(e) {
+					e.preventDefault();
+            canvas.isDrawing = false;
+        };
+    }
+
+    var container = document.getElementById('canvas');
+    init(container, 50, 400, '#fff');
+
+})();
 					$('div#m1_text_holder').html("<p><strong>林徽因：</strong>为求得题字的全文，我们当时就请寺僧入村去募工搭架，想将梁下的土朱洗脱，一看究竟。不料村僻人稀，和尚去了一整天，仅得老农二人，对这种工作完全没有经验，筹划了一天，才支起一架。我们已急不能待地把布单撕开浸水相互传递，但是也做了半天才洗出两道梁。土朱一着了水，墨迹就骤然显出，但是水干之后，墨色又淡下去，又隐约不可见了。费了三天时间，才读完题字原文。可喜的是字体宛然唐风，无可置疑。</p>");
 
 				}
