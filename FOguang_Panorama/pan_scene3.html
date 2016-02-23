@@ -439,7 +439,7 @@
 				material.opacity = 0.7;
 
 				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
-				object = new THREE.Mesh( new  THREE.SphereGeometry(7, 20, 10), material);
+				object = new THREE.Mesh( new  THREE.SphereGeometry(10, 20, 10), material);
 				object.position.set(-170, 180, -258);
 				object.name = "testOBJ001";
 
@@ -452,7 +452,7 @@
 				material.opacity = 0.7;
 
 				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
-				var hotspot2 = new THREE.Mesh( new  THREE.SphereGeometry(10, 20, 10), material);
+				var hotspot2 = new THREE.Mesh( new  THREE.SphereGeometry(12, 20, 10), material);
 				hotspot2.position.set(-350, 250, -258);
 				hotspot2.name = "hotspot2";
 
@@ -468,7 +468,7 @@
 				material.opacity = 0.7;
 
 				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
-				var hotspot3 = new THREE.Mesh( new  THREE.SphereGeometry(8, 20, 10), material);
+				var hotspot3 = new THREE.Mesh( new  THREE.SphereGeometry(10, 20, 10), material);
 				hotspot3.position.set(-350, 120, -138);
 				hotspot3.name = "hotspot3";
 
@@ -485,7 +485,7 @@
 				material.opacity = 0.7;
 
 				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
-				var hotspot4 = new THREE.Mesh( new  THREE.SphereGeometry(7, 20, 10), material);
+				var hotspot4 = new THREE.Mesh( new  THREE.SphereGeometry(10, 20, 10), material);
 				hotspot4.position.set(-350, 150, -18);
 				hotspot4.name = "hotspot4";
 
@@ -887,7 +887,7 @@
 					$('div#modal1_img').attr({"class":""});
 				//	$('div#modal1_img').html();
 					$('div#canvas').css("background", "url(img/4/details/bkgtitle1.jpg)");
-					$('div#canvas').css("width","231px");$('div#canvas').css("height","400px");
+					$('div#canvas').css("width","300px");$('div#canvas').css("height","400px");
 					(function() {
     // Creates a new canvas element and appends it as a child
     // to the parent element, and returns the reference to
@@ -932,7 +932,7 @@
             if (!canvas.isDrawing) {
                return;
             }
-             var x = e.pageX - this.offsetLeft*1.5;
+             var x = e.pageX - this.offsetLeft*1.45;
              var y = e.pageY - this.offsetTop*6;
 						 console.log(this.offsetLeft);
 						 console.log(this.offsetTop);
@@ -948,7 +948,7 @@
             if (!canvas.isDrawing) {
                return;
             }
-            var x = e.pageX - this.offsetLeft*2.8;
+            var x = e.pageX - this.offsetLeft*5;
             var y = e.pageY - 100;
             var radius = 10; // or whatever
             var fillColor = '#ff0000';
