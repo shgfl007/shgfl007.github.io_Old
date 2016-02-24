@@ -897,6 +897,9 @@
 		var offsetX=canvasOffset.left;
 		var offsetY=canvasOffset.top;
 
+		var position = $('#modal1_img').position();
+		var position0;
+
 
     function createCanvas(parent, width, height) {
         var canvas = {};
@@ -911,6 +914,11 @@
     function init(container, width, height, fillColor) {
         var canvas = createCanvas(container, width, height);
         var ctx = canvas.context;
+				ctx.globalAlpha = 0.5;
+				position0 = $('#modal1_img').offset();
+
+				console.log("left position is " + position.left + "px, top is " + position.top);
+				console.log("left offset is " + position0.left + "px, top offset is " + position0.top);
 				//var canvas = document.getElementById("canvas");
         // define a custom fillCircle method
 				//canvas.addEventListener("touchstart",ontouchstart, false);
@@ -932,12 +940,12 @@
             if (!canvas.isDrawing) {
                return;
             }
-             var x = e.pageX - this.offsetLeft*1.45;
-             var y = e.pageY - this.offsetTop*6;
-						 console.log(this.offsetLeft);
-						 console.log(this.offsetTop);
-						// var x = e.pageX - offsetX;
-						// var y = e.pageY - offsetY;
+             //var x = e.pageX - this.offsetLeft*1.45;
+             //var y = e.pageY - this.offsetTop*6;
+						//  console.log(this.offsetLeft);
+						//  console.log(this.offsetTop);
+						 var x = e.pageX - this.offsetLeft+position.left-position0.left;
+						 var y = e.pageY - this.offsetTop+position.top -position0.top;
             var radius = 20; // or whatever
             var fillColor = '#ff0000';
             ctx.globalCompositeOperation = 'destination-out';
