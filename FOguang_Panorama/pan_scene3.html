@@ -556,18 +556,15 @@
 
 				//------------------------------------------------------
 
-				var material = new THREE.MeshBasicMaterial( { color: 0xffaa00, transparent: true, blending: THREE.AdditiveBlending } ) ;
+				var material = new THREE.MeshBasicMaterial( { color: 0xffaa00, transparent: true, side: THREE.DoubleSide, blending: THREE.AdditiveBlending, alphaMap: THREE.ImageUtils.loadTexture("img/maps/right.png")} ) ;
 				material.opacity = 0.5;
-				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
-				// var tele_left = new THREE.Mesh( new  THREE.SphereGeometry(15, 20, 10), material);
-				// tele_left.position.set(70, -150, 400);
-				//
-				//
-				//
-				// scene.add(tele_left);
+				var tele_right = new THREE.Mesh( new  THREE.PlaneGeometry( 80, 80, 12 ), material);
 
-				var tele_right = new THREE.Mesh( new  THREE.SphereGeometry(10, 20, 10), material);
-				tele_right.position.set(400, -120, -150);
+				//var tele_right = new THREE.Mesh( new  THREE.SphereGeometry(10, 20, 10), material);
+				tele_right.rotation.y = 90 * Math.PI/180;
+				tele_right.rotation.x = 120 * Math.PI/180;
+				tele_right.rotation.z = -120 * Math.PI/180;
+				tele_right.position.set(250, -120, -80);
 
 
 
