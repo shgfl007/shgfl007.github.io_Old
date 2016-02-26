@@ -139,9 +139,9 @@
 						</div>
       		</div>
       		<div class="modal-footer">
-						<button type="button" class="btn btn-default" id="m1_pre" hidden="" onclick="m1_buttons_pre()">Previous</button>
+						<button type="button" class="btn btn-warning" id="m1_pre" hidden="" onclick="m1_buttons_pre()">Previous</button>
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-default" id="m1_next" onclick="m1_button_next()">Next</button>      		</div>
+						<button type="button" class="btn btn-warning" id="m1_next" onclick="m1_button_next()">Next</button>      		</div>
     		</div>
   		</div>
 		</div>
@@ -289,9 +289,9 @@
 
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" id="m5_pre" hidden="" onclick="m5_buttons_pre()">Previous</button>
+						<button type="button" class="btn btn-warning" id="m5_pre" hidden="" onclick="m5_buttons_pre()">Previous</button>
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-default" id="m5_next" onclick="m5_button_next()">Next</button>
+						<button type="button" class="btn btn-warning" id="m5_next" onclick="m5_button_next()">Next</button>
 					</div>
 				</div>
 			</div>
@@ -1243,7 +1243,7 @@
 		$('#modal3').on('shown.bs.modal', function(e){
 			var audio = document.getElementById('audio3');
 			audio.play();
-			bgm.pause();
+			//bgm.pause();
 		});
 
 		$('#modal3').on('hide.bs.modal', function(e){
@@ -1259,7 +1259,7 @@
 			var video = document.getElementById('m4_video');
 			video.load();
 			video.play();
-			bgm.pause();
+			//bgm.pause();
 		});
 
 		$('#modal4').on('hide.bs.modal', function(e){
@@ -1275,7 +1275,7 @@
 			var audio = document.getElementById('m5_audio');
 			audio.play();
 
-			bgm.pause();
+			//bgm.pause();
 			audio.onended = function(){m5_update(1);};
 
 		// 	audio.onended = function(){
@@ -1357,7 +1357,7 @@
 		$('#modal6').on('shown.bs.modal', function(e){
 			var audio = document.getElementById('audio6');
 			audio.play();
-			bgm.pause();
+			//bgm.pause();
 		});
 
 		$('#modal6').on('hide.bs.modal', function(e){
