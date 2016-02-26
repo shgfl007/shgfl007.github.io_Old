@@ -788,6 +788,7 @@
 
 		$('#modal3').on('shown.bs.modal', function(e){
 			var audio = document.getElementById('audio3');
+			audio.load();
 			audio.play();
 			bgm.pause();
 			n1.pause();
@@ -804,6 +805,7 @@
 
 		$('#modal4').on('shown.bs.modal', function(e){
 			var audio = document.getElementById('audio4');
+			audio.load();
 			audio.play();
 			bgm.pause();
 			n1.pause();

@@ -1200,6 +1200,7 @@
 
 		$('#modal1').on('shown.bs.modal', function(e){
 			var audio1 = document.getElementById('audio1');
+			audio1.load();
 			audio1.play();
 			bgm.pause();
 
@@ -1239,6 +1240,7 @@
 
 		$('#modal3').on('shown.bs.modal', function(e){
 			var audio = document.getElementById('audio3');
+			audio.load();
 			audio.play();
 			//bgm.pause();
 		});
@@ -1252,6 +1254,7 @@
 
 		$('#modal4').on('shown.bs.modal', function(e){
 			var audio = document.getElementById('m4_audio');
+			audio.load();
 			audio.play();
 			var video = document.getElementById('m4_video');
 			video.load();
@@ -1270,6 +1273,7 @@
 
 		$('#modal5').on('shown.bs.modal', function(e){
 			var audio = document.getElementById('m5_audio');
+			audio.load();
 			audio.play();
 
 			//bgm.pause();
@@ -1353,6 +1357,7 @@
 
 		$('#modal6').on('shown.bs.modal', function(e){
 			var audio = document.getElementById('audio6');
+			audio.load();
 			audio.play();
 			//bgm.pause();
 		});
