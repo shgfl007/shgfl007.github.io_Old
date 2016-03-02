@@ -179,6 +179,8 @@ function m5_button_next(){
 function m1_update(direction){
   var isSupp0 = audio1.canPlayType("audio/mpeg");
   var isSupp1 = audio1.canPlayType("audio/wav");
+  var isBgmSupp0 = m1_bgm.canPlayType("audio/mpeg");
+  var isBgmSupp1 = m1_bgm.canPlayType("audio/wav");
   if ((m1_count == 0 && direction == 1) || (m1_count == 2 && direction == -1) ) {
     //load second sound tracking
     if (isSupp0 === "") {
@@ -190,9 +192,26 @@ function m1_update(direction){
     }else {
       audio1.src="audio/4/2.mp3";
     }
+    if (direction == -1) {
+      if (isBgmSupp0 === "") {
+        if (isBgmSupp1 === "") {
+          m1_bgm.src="audio/3/m3_bgm_0.ogg";
+        }else {
+          m1_bgm.src="audio/3/m3_bgm_0.wav";
+        }
+      }else {
+        m1_bgm.src="audio/3/m3_bgm_0.mp3";
+      }
+      m1_bgm.load();
+      m1_bgm.play();
+    }
+
+
     m1_count=m1_count + direction;
     audio1.load();
     audio1.play();
+
+
     $('div#modal1_img').attr({
       "class" : "gallery autoplay items-2"
     });
@@ -217,9 +236,21 @@ function m1_update(direction){
     }else {
       audio1.src="audio/4/3.mp3";
     }
+
+    if (isBgmSupp0 === "") {
+      if (isBgmSupp1 === "") {
+        m1_bgm.src="audio/3/m3_bgm_1.ogg";
+      }else {
+        m1_bgm.src="audio/3/m3_bgm_1.wav";
+      }
+    }else {
+      m1_bgm.src="audio/3/m3_bgm_1.mp3";
+    }
     m1_count=m1_count + direction;
     audio1.load();
     audio1.play();
+    m1_bgm.load();
+    m1_bgm.play();
 
     $('div#modal1_img').html('<div id="canvas"></div>');
     $('div#modal1_img').attr({"class":""});
@@ -368,6 +399,7 @@ function m1_update(direction){
     }else {
       audio1.src="audio/4/1.mp3";
     }
+
     m1_count = 0;
     if (direction == -1) {
       $('div#m1_text_holder').html("<p><strong>林徽因：</strong>我们在东大殿工作了几天，才看见殿内梁底隐约有墨迹，且有字的左右共四梁，这个发现对我们大家有如电击一般，没有比写在梁柱上或刻在石头上的日期更让人喜欢的东西了。但字迹被土朱所掩盖，梁底离地两丈多高，光线又不足，各梁的文字颇难确辨，审视了许久，各人凭字迹的目力，揣拟再三，才认出官职一二，而不能辨别人名。我素来远视，独见“女弟子宁公遇”之名，深怕有误，又详细检查阶前经幢上的姓名。</p>");
@@ -388,8 +420,20 @@ function m1_update(direction){
       );
       audio1.load();
       audio1.play();
+      //m1_bgm.load();
+      // m1_bgm.play();
     }else {
+      if (isBgmSupp0 === "") {
+        if (isBgmSupp1 === "") {
+          m1_bgm.src="audio/3/m3_bgm_0.ogg";
+        }else {
+          m1_bgm.src="audio/3/m3_bgm_0.wav";
+        }
+      }else {
+        m1_bgm.src="audio/3/m3_bgm_0.mp3";
+      }
       audio1.pause();
+      m1_bgm.pause();
     }
 
   }
@@ -419,8 +463,11 @@ function m1_button_next(){
 
 $('#modal1').on('shown.bs.modal', function(e){
   var audio1 = document.getElementById('audio1');
+  var m1_bgm = document.getElementById('m1_bgm');
   audio1.load();
   audio1.play();
+  m1_bgm.load();
+  m1_bgm.play();
   bgm.pause();
 
   //init text area
@@ -451,6 +498,8 @@ $('#modal1').on('shown.bs.modal', function(e){
 
 $('#modal1').on('hide.bs.modal', function(e){
   var audio1 = document.getElementById('audio1');
+  var m1_bgm = document.getElementById('m1_bgm');
+  m1_bgm.pause();
   audio1.pause();
   bgm.play();
 

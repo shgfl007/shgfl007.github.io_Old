@@ -212,10 +212,12 @@ $('#modal3').on('hide.bs.modal', function(e){
 
 $('#modal4').on('shown.bs.modal', function(e){
   var audio = document.getElementById('audio4');
+  var m4bgm = document.getElementById('m4_bgm');
   audio.load();
   audio.play();
   bgm.pause();
   n1.pause();
+  m4bgm.play();
 
   if (m4_count==0) {
     $('div#m4_text_holder').html("<p>这幅位于主佛坛背后的束腰壁画是罗哲文罗老在1964年的那次佛光寺考察中发现的。</p>");
@@ -244,7 +246,9 @@ $('#modal4').on('shown.bs.modal', function(e){
 
 $('#modal4').on('hide.bs.modal', function(e){
   var audio = document.getElementById('audio4');
+  var m4bgm = document.getElementById('m4_bgm');
   audio.pause();
+  m4bgm.pause();
   bgm.play();
   if (!n1_ended) {
     n1.play();
