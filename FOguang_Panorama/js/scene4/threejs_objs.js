@@ -95,16 +95,6 @@
 				hemi.position.set( 1, 1, 1 );
         scene.add(hemi);
 
-				var material = new THREE.MeshBasicMaterial( { color:0xFF3301, transparent: true, blending: THREE.AdditiveBlending } ) ;
-				material.opacity = 0.7;
-
-				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
-				object = new THREE.Mesh( new  THREE.SphereGeometry(15, 20, 10), material);
-				object.position.set(-400, 200, 0);
-				object.name = "testOBJ001";
-
-				hotspots.push(object);
-				scene.add(object);
 
 				//---------------------------------------------------------------------------
 				var material = new THREE.MeshBasicMaterial( { color:0xFF3301, transparent: true, blending: THREE.AdditiveBlending } ) ;
@@ -221,17 +211,6 @@
 
 
 
-			domEvents.addEventListener(object, 'click', function(event){
-					$('#modal3').modal('toggle');
-				}, false);
-
-				domEvents.addEventListener(object, 'mouseover', function(event){
-					object.material.opacity = 1;
-				});
-
-				domEvents.addEventListener(object, 'mouseout', function(event){
-					object.material.opacity = 0.7;
-				});
 
 				domEvents.addEventListener(hotspot2, 'click', function(event){
 						$('#modal4').modal('toggle');
@@ -262,7 +241,7 @@
 			domEvents.addEventListener(tele_left, 'click', function(event){
 						//console.log('click on the door!!', object);
 						//tele_left.material.color = 0x4091FF;
-						window.open('pan_scene3.html','_self');
+						window.open('pan_scene5.html','_self');
 				}
 			);
 

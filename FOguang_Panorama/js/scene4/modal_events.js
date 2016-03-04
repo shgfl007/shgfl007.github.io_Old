@@ -277,9 +277,11 @@ $(document).ready(function(){
 
 $('#modal2').on('shown.bs.modal', function(e){
   var audio = document.getElementById('m2_audio');
+  var m2bgm = document.getElementById('m2_bgm');
   audio.load();
   audio.play();
   bgm.pause();
+  m2bgm.play();
   audio.onended = function(){
     m2_update(1);
   };
@@ -288,25 +290,14 @@ $('#modal2').on('shown.bs.modal', function(e){
 
 $('#modal2').on('hide.bs.modal', function(e){
   var audio = document.getElementById('m2_audio');
+  var m2bgm = document.getElementById('m2_bgm');
   audio.pause();
+  m2bgm.pause();
   bgm.play();
 
 });
 
-$('#modal3').on('shown.bs.modal', function(e){
-  var audio = document.getElementById('audio3');
-  audio.load();
-  audio.play();
-  bgm.pause();
-  n1.pause();
-});
 
-$('#modal3').on('hide.bs.modal', function(e){
-  var audio = document.getElementById('audio3');
-  audio.pause();
-  bgm.play();
-
-});
 
 $('#modal4').on('shown.bs.modal', function(e){
   var audio = document.getElementById('audio4');

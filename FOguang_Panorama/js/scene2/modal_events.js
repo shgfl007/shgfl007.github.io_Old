@@ -149,8 +149,11 @@ $('#modal3').on('hide.bs.modal', function(e){
 
 $('#modal4').on('shown.bs.modal', function(e){
   var audio1 = document.getElementById('audio1');
+  var bgm4 = document.getElementById('m4_bgm');
   audio1.load();
   audio1.play();
+  bgm4.load();
+  bgm4.play();
   bgm.pause();
 
   //init text area
@@ -180,6 +183,8 @@ $('#modal4').on('shown.bs.modal', function(e){
 
 $('#modal4').on('hide.bs.modal', function(e){
   var audio1 = document.getElementById('audio1');
+  var bgm4 = document.getElementById('m4_bgm');
+  bgm4.pause();
   audio1.pause();
   bgm.play();
 });

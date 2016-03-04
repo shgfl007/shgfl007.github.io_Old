@@ -77,7 +77,7 @@
 
     				mesh = new THREE.Mesh( geometry, material );
 						mesh.name = "pan";
-
+						mesh.rotation.y = -180 * Math.PI/180;
     				scene.add( mesh );
           }
         );
@@ -99,7 +99,7 @@
 
 				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
 				object = new THREE.Mesh( new  THREE.SphereGeometry(13, 20, 10), material);
-				object.position.set(-170, 180, -258);
+				object.position.set(170, 180, 258);
 				object.name = "testOBJ001";
 
 
@@ -112,7 +112,7 @@
 
 				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
 				var hotspot2 = new THREE.Mesh( new  THREE.SphereGeometry(15, 20, 10), material);
-				hotspot2.position.set(-350, 250, -258);
+				hotspot2.position.set(350, 250, 258);
 				hotspot2.name = "hotspot2";
 
 				// if (!hotspotControl) {
@@ -128,7 +128,7 @@
 
 				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
 				var hotspot3 = new THREE.Mesh( new  THREE.SphereGeometry(15, 20, 10), material);
-				hotspot3.position.set(-350, 120, -138);
+				hotspot3.position.set(350, 120, 138);
 				hotspot3.name = "hotspot3";
 
 				// if (!hotspotControl) {
@@ -145,7 +145,7 @@
 
 				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
 				var hotspot4 = new THREE.Mesh( new  THREE.SphereGeometry(15, 20, 10), material);
-				hotspot4.position.set(-350, 150, -18);
+				hotspot4.position.set(350, 150, 18);
 				hotspot4.name = "hotspot4";
 
 				// if (!hotspotControl) {
@@ -162,9 +162,9 @@
 				material.transparent = true; material.opacity = 0.3;
 				var title_2 = new THREE.Mesh( geometry, material );
 
-				title_2.position.set(30, 120, -88);
+				title_2.position.set(-30, 120, 88);
 				title_2.rotation.y = -5*Math.PI/180;
-				title_2.rotation.z = -114*Math.PI/180;
+				title_2.rotation.z = -111*Math.PI/180;
 				title_2.rotation.x = 85*Math.PI/180;
 
 				hotspots.push(title_2);
@@ -177,9 +177,9 @@
 				material.transparent = true; material.opacity = 0.3;
 				title_1 = new THREE.Mesh( geometry, material );
 
-				title_1.position.set(-73, 120, -43);
-				title_1.rotation.y = -5*Math.PI/180;
-				title_1.rotation.z = -112.5*Math.PI/180;
+				title_1.position.set(73, 120, 43);
+				title_1.rotation.y = -10*Math.PI/180;
+				title_1.rotation.z = -114*Math.PI/180;
 				title_1.rotation.x = 85*Math.PI/180;
 				hotspots.push(title_1);
 				scene.add( title_1 );
@@ -217,10 +217,10 @@
 				var tele_right = new THREE.Mesh( new  THREE.PlaneGeometry( 80, 80, 12 ), material);
 
 				//var tele_right = new THREE.Mesh( new  THREE.SphereGeometry(10, 20, 10), material);
-				tele_right.rotation.y = 90 * Math.PI/180;
-				tele_right.rotation.x = 120 * Math.PI/180;
-				tele_right.rotation.z = -120 * Math.PI/180;
-				tele_right.position.set(250, -120, -80);
+				//tele_right.rotation.y = 90 * Math.PI/180;
+				tele_right.rotation.x = 90 * Math.PI/180;
+				tele_right.rotation.z = 70 * Math.PI/180;
+				tele_right.position.set(-200, -120, 50);
 
 
 
