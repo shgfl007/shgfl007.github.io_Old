@@ -19,6 +19,7 @@ function m2_update(direction){
     '圆形头光围饰，遍身璎珞。菩萨身后立一比丘状侍者。佛坛前绘博山炉一尊，两侧绘手捧莲花的供养菩萨各一，呈半蹲式，头饰头光。</p>' +
     '<p>学术界对三组佛像说法不一。中间一组的主像有的认为是释迦，有的认为是阿弥陀佛。左右两组的主像有的认为是观音和大势至菩萨，有的认为是文殊和普贤菩萨。亟待下一步的研究及探讨。</p>');
     m2_count = m2_count + direction;
+    $('#m2_audio').removeAttr("controls");
     audio.load();
     audio.pause();
   }else if (m2_count == 1) {
@@ -30,7 +31,9 @@ function m2_update(direction){
       audio.play();
     }
     m2_count = 0;
-
+    $('#m2_audio').attr({
+      "controls" : "controls"
+    });
     $('div#m2_text').html("<p>这幅唐代栱眼壁壁画位于东大殿内槽北次间栱眼壁外侧。柴泽俊先生将这幅图命名为弥陀说法图。整组造像布局严谨、主次分明，形象生动、风格雄健，实为我国现存唐代佛教壁画珍品。并且壁画造像布局与佛坛塑像布局严格对应，是壁画与塑像同为唐代建造的最好印证。</p>");
 
   }

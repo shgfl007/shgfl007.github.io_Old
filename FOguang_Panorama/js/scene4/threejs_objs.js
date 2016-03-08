@@ -78,7 +78,7 @@
 
     				mesh = new THREE.Mesh( geometry, material );
 						mesh.name = "pan";
-
+						mesh.rotation.y = 90*Math.PI/180;
     				scene.add( mesh );
           }
         );
@@ -102,7 +102,7 @@
 
 				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
 				var hotspot2 = new THREE.Mesh( new  THREE.SphereGeometry(15, 20, 10), material);
-				hotspot2.position.set(400, 120, 180);
+				hotspot2.position.set(400, 120, -280);
 				hotspot2.name = "hotspot2";
 
 				hotspots.push(hotspot2);
@@ -110,15 +110,15 @@
 
 
 				//--------------------------------------------------
-				var geometry = new THREE.PlaneGeometry( 80, 12, 32 );
+				var geometry = new THREE.PlaneGeometry( 90, 12, 25 );
 				var material = new THREE.MeshBasicMaterial( {color: 0x34FFCA, side: THREE.DoubleSide, blending: THREE.AdditiveBlending} );
 				material.transparent = true; material.opacity = 0.3;
 				var title_2 = new THREE.Mesh( geometry, material );
 
-				title_2.position.set(-120, 87, -43);
+				title_2.position.set(-50, 103, 140);
 				//title_2.rotation.z = -15*Math.PI/180;
 				//title_2.rotation.z = -2*Math.PI/180;
-				title_2.rotation.y = 5*Math.PI/180;
+				title_2.rotation.y = 96*Math.PI/180;
 				//title_2.rotation.x = 90*Math.PI/180;
 
 				hotspots.push(title_2);
@@ -159,9 +159,9 @@
 				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
 				var tele_left = new THREE.Mesh( new  THREE.PlaneGeometry( 100, 100, 32 ), material);
 				tele_left.rotation.x = 90 * Math.PI/180;
-				tele_left.rotation.z = -15 * Math.PI/180;
+				tele_left.rotation.z = -90 * Math.PI/180;
 
-				tele_left.position.set(50, -150, 350);
+				tele_left.position.set(150, -150, 0);
 				//tele_left.position.set(70, -150, 400);
 
 
@@ -171,9 +171,10 @@
 				var material = new THREE.MeshBasicMaterial( { color: 0xffaa00, transparent: true, side: THREE.DoubleSide, blending: THREE.AdditiveBlending, alphaMap: THREE.ImageUtils.loadTexture("img/maps/right.png")} ) ;
 				material.opacity = 0.5;
 				var tele_right = new THREE.Mesh( new  THREE.PlaneGeometry( 100, 100, 32 ), material);
-				tele_right.rotation.x = -90 * Math.PI/180;
-				tele_right.rotation.z = -10 * Math.PI/180;
-				tele_right.position.set(-270, -150, -260);
+				tele_right.rotation.x = 90 * Math.PI/180;
+				//tele_right.rotation.y = 90 * Math.PI/180;
+				tele_right.rotation.z = 90 * Math.PI/180;
+				tele_right.position.set(-180, -150,200);
 
 
 
