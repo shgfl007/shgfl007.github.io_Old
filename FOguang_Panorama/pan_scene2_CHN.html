@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>东大殿佛坛全景游览</title>
+		<title>佛光寺全景游览</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
@@ -57,21 +57,22 @@
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/gallery.prefixed.css">
 		<link rel="stylesheet" href="css/gallery.theme.css">
+		<link rel="stylesheet" href="css/main.css">
 		<!-- <link rel="stylesheet" href="css/SSUhtml5audio.css"> -->
 	</head>
 	<body>
 
 		<div id="container"></div>
 		<div id="info">
-      <button type="button" class="btn btn-danger" id="changeControls" onclick="toggleControls()">转换控制</button>
-			<button type="button" class="btn btn-danger" id="hotspotbutton" onclick="toggleHotspots()">显示/隐藏热点</button>
+      <button type="button" class="btn btn-danger" id="changeControls" onclick="toggleControls()">切換操控</button>
+			<button type="button" class="btn btn-danger" id="hotspotbutton" onclick="toggleHotspots()">顯示/隱藏熱點</button>
 			<!-- 	<button type="button" class="btn btn-warning btn-xs" id="songPlayPause" onclick="playPause('n1')">Start/Pause intro</button> -->
 
 			<!-- <div id="songPlayPause" onclick="playPause('song')"></div> -->
 			<!-- <div class="popup"><div class="text"></div></div> -->
 		</div>
 		<div id="info2">
-			<button type="button" class="btn btn-info btn-xs" id="songPlayPause" onclick="playPause('bgm1')">播放/暂停背景音乐</button>
+			<button type="button" class="btn btn-info btn-xs" id="songPlayPause" onclick="playPause('bgm1')">播放/暫停背景樂</button>
 		</div>
 
 
@@ -94,7 +95,7 @@
     		<div class="modal-content">
       		<div class="modal-header">
         		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        		<h4 class="modal-title" id="myModalLabel">明间南缝梁架明四椽栿</h4>
+        		<h1 class="modal-title" id="myModalLabel">明間南縫梁架明四椽栿</h1>
       		</div>
       		<div class="modal-body" align="center">
 						<img src="img/4/details/title3.jpg" height="400px">
@@ -105,7 +106,7 @@
 
       		</div>
       		<div class="modal-footer">
-        		<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        		<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
       		</div>
     		</div>
   		</div>
@@ -118,7 +119,7 @@
     		<div class="modal-content">
       		<div class="modal-header">
         		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        		<h4 class="modal-title" id="myModalLabel">南次间南缝梁架明四椽栿</h4>
+        		<h1 class="modal-title" id="myModalLabel">南次間南縫梁架明四椽栿</h1>
       		</div>
       		<div class="modal-body" align="center">
 						<div id="modal2_img" class="gallery autoplay items-3">
@@ -158,7 +159,7 @@
 
       		</div>
       		<div class="modal-footer">
-        		<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        		<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
       		</div>
     		</div>
   		</div>
@@ -171,7 +172,7 @@
     		<div class="modal-content">
       		<div class="modal-header">
         		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        		<h4 class="modal-title" id="myModalLabel">弥勒佛南侧供养菩萨</h4>
+        		<h1 class="modal-title" id="myModalLabel">彌勒佛南側供養菩薩</h1>
       		</div>
       		<div class="modal-body" align="center">
 						<!-- <img src="img/4/details/title3.jpg" height="400px"> -->
@@ -182,7 +183,7 @@
 						</div>
 
 						<div id="m3_audio_sec">
-							<audio id="m3_audio">
+							<audio id="m3_audio" controls="">
 								<source src="audio/3/m3.mp3" type="audio/mp3">
 								<source src="audio/3/m3.ogg" type="audio/ogg">
 								<source src="audio/3/m3.wav" type="audio/wav">
@@ -202,7 +203,7 @@
 
       		</div>
       		<div class="modal-footer">
-        		<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        		<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
       		</div>
     		</div>
   		</div>
@@ -216,10 +217,17 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel">宁公遇</h4>
+						<h1 class="modal-title" id="myModalLabel">甯公遇</h1>
 					</div>
 					<div class="modal-body" align="center">
 						<!-- <img src="img/4/details/title3.jpg" height="400px"> -->
+						<div id="m4_bgm_sec">
+							<audio id="m4_bgm">
+								<source src="audio/3/m4_bgm.mp3" type="audio/mp3">
+								<source src="audio/3/m4_bgm.ogg" type="audio/ogg">
+								<source src="audio/3/m4_bgm.wav" type="audio/wav">
+							</audio>
+						</div>
 						<div id="modal4_img">
 						</div>
 						<div id="audio1_placeholder">
@@ -236,9 +244,9 @@
 
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-warning" id="m4_buttons_pre" onclick="m4_pre()" hidden="">前一节</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-						<button type="button" class="btn btn-warning" id="m4_buttons_next" onclick="m4_next()">后一节</button>
+						<button type="button" class="btn btn-warning" id="m4_buttons_pre" onclick="m4_pre()" hidden="">前一節</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+						<button type="button" class="btn btn-warning" id="m4_buttons_next" onclick="m4_next()">後一節</button>
 					</div>
 				</div>
 			</div>
@@ -252,7 +260,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel">弥勒佛</h4>
+						<h1 class="modal-title" id="myModalLabel">彌勒佛</h1>
 					</div>
 					<div class="modal-body" align="center">
 						<!-- <img src="img/4/details/title3.jpg" height="400px"> -->
@@ -274,7 +282,7 @@
 
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
 					</div>
 				</div>
 			</div>
@@ -287,7 +295,7 @@
     		<div class="modal-content">
       		<div class="modal-header">
         		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        		<h4 class="modal-title" id="myModalLabel">普贤菩萨</h4>
+        		<h1 class="modal-title" id="myModalLabel">普賢菩薩</h1>
       		</div>
       		<div class="modal-body" align="center">
 						<!-- <img src="img/4/details/title3.jpg" height="400px"> -->
@@ -309,7 +317,7 @@
 
       		</div>
       		<div class="modal-footer">
-        		<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        		<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
       		</div>
     		</div>
   		</div>
@@ -323,7 +331,7 @@
     		<div class="modal-content">
       		<div class="modal-header">
         		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        		<h4 class="modal-title" id="myModalLabel">两侧天王</h4>
+        		<h1 class="modal-title" id="myModalLabel">兩側天王</h1>
       		</div>
       		<div class="modal-body" align="center">
 						<!-- <img src="img/4/details/title3.jpg" height="400px"> -->
@@ -343,7 +351,7 @@
 
       		</div>
       		<div class="modal-footer">
-        		<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        		<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
       		</div>
     		</div>
   		</div>

@@ -134,12 +134,12 @@ function m4_update(direction){
     //load third sound tracking
     if (isSupp0 === "") {
       if (isSupp1 === "") {
-        audio.src="audio/4/m4_4.ogg";
+        audio.src="audio/6/m4_004.ogg";
       }else {
-        audio.src="audio/4/m4_4.wav";
+        audio.src="audio/6/m4_004.wav";
       }
     }else {
-      audio.src="audio/4/m4_4.mp3";
+      audio.src="audio/6/m4_004.mp3";
     }
 
     $('div#modal4_img').attr({

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>东大殿佛坛全景游览</title>
+		<title>佛光寺全景游览</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
@@ -57,14 +57,15 @@
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/gallery.prefixed.css">
 		<link rel="stylesheet" href="css/gallery.theme.css">
+		<link rel="stylesheet" href="css/main.css">
 		<!-- <link rel="stylesheet" href="css/SSUhtml5audio.css"> -->
 	</head>
 	<body>
 
 		<div id="container"></div>
 		<div id="info">
-      <button type="button" class="btn btn-danger" id="changeControls" onclick="toggleControls()">转换控制</button>
-			<button type="button" class="btn btn-danger" id="hotspotbutton" onclick="toggleHotspots()">显示/隐藏热点</button>
+      <button type="button" class="btn btn-danger" id="changeControls" onclick="toggleControls()">切換操控</button>
+			<button type="button" class="btn btn-danger" id="hotspotbutton" onclick="toggleHotspots()">顯示/隱藏熱點</button>
 
 				<!-- <button type="button" class="btn btn-info btn-xs" id="songPlayPause" onclick="playPause('bgm1')">Play/Pause</button>
 				<button type="button" class="btn btn-warning btn-xs" id="songPlayPause" onclick="playPause('n1')">Start/Pause intro</button> -->
@@ -73,7 +74,7 @@
 			<!-- <div class="popup"><div class="text"></div></div> -->
 		</div>
 		<div id="info2">
-			<button type="button" class="btn btn-info btn-xs" id="songPlayPause" onclick="playPause('bgm1')">播放/暂停背景音乐</button>
+			<button type="button" class="btn btn-info btn-xs" id="songPlayPause" onclick="playPause('bgm1')">播放/暫停背景樂</button>
 		</div>
 
 		<div id="bgm_section">
@@ -96,7 +97,7 @@
     		<div class="modal-content">
       		<div class="modal-header">
         		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        		<h4 class="modal-title" id="myModalLabel">宁公遇题记的发现</h4>
+        		<h1 class="modal-title" id="myModalLabel">甯公遇題記的發現</h1>
       		</div>
       		<div class="modal-body" align="center">
 
@@ -147,9 +148,9 @@
 						</div>
       		</div>
       		<div class="modal-footer">
-						<button type="button" class="btn btn-warning" id="m1_pre" hidden="" onclick="m1_buttons_pre()">前一节</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-						<button type="button" class="btn btn-warning" id="m1_next" onclick="m1_button_next()">后一节</button>      		</div>
+						<button type="button" class="btn btn-warning" id="m1_pre" hidden="" onclick="m1_buttons_pre()">前一節</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+						<button type="button" class="btn btn-warning" id="m1_next" onclick="m1_button_next()">後一節</button>      		</div>
     		</div>
   		</div>
 		</div>
@@ -161,7 +162,7 @@
     		<div class="modal-content">
       		<div class="modal-header">
         		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        		<h4 class="modal-title" id="myModalLabel">明间南缝梁架明四椽栿</h4>
+        		<h1 class="modal-title" id="myModalLabel">明間南縫梁架明四椽栿</h1>
       		</div>
       		<div class="modal-body" align="center">
 						<img src="img/4/details/title3.jpg" height="400px">
@@ -169,7 +170,7 @@
 
       		</div>
       		<div class="modal-footer">
-        		<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        		<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
       		</div>
     		</div>
   		</div>
@@ -182,7 +183,7 @@
     		<div class="modal-content">
       		<div class="modal-header">
         		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        		<h4 class="modal-title" id="myModalLabel">阿弥陀佛</h4>
+        		<h1 class="modal-title" id="myModalLabel">阿彌陀佛</h1>
       		</div>
       		<div class="modal-body" align="center">
 						<!-- <img src="img/4/details/title3.jpg" height="400px"> -->
@@ -207,7 +208,7 @@
 
       		</div>
       		<div class="modal-footer">
-        		<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        		<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
       		</div>
     		</div>
   		</div>
@@ -220,7 +221,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel">阿弥陀佛北侧胁侍菩萨</h4>
+						<h1 class="modal-title" id="myModalLabel">阿彌陀佛北側脅侍菩薩</h1>
 					</div>
 					<div class="modal-body" align="center">
 						<!-- <img src="img/4/details/title3.jpg" height="400px"> -->
@@ -231,7 +232,7 @@
 						</div>
 
 						<div id="m4_audio_sec">
-							<audio id="m4_audio">
+							<audio id="m4_audio" controls="">
 								<source src="audio/5/m4.mp3" type="audio/mp3">
 								<source src="audio/5/m4.ogg" type="audio/ogg">
 								<source src="audio/5/m4.wav" type="audio/wav">
@@ -255,7 +256,7 @@
 
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
 					</div>
 				</div>
 			</div>
@@ -269,7 +270,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel">文殊菩萨-新样文殊</h4>
+						<h1 class="modal-title" id="myModalLabel">文殊菩薩-新樣文殊</h1>
 					</div>
 					<div class="modal-body" align="center">
 						<!-- <img src="img/4/details/title3.jpg" height="400px"> -->
@@ -297,9 +298,9 @@
 
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-warning" id="m5_pre" hidden="" onclick="m5_buttons_pre()">前一节</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-						<button type="button" class="btn btn-warning" id="m5_next" onclick="m5_button_next()">后一节</button>
+						<button type="button" class="btn btn-warning" id="m5_pre" hidden="" onclick="m5_buttons_pre()">前一節</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+						<button type="button" class="btn btn-warning" id="m5_next" onclick="m5_button_next()">後一節</button>
 					</div>
 				</div>
 			</div>
@@ -312,7 +313,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel">两侧天王</h4>
+						<h1 class="modal-title" id="myModalLabel">兩側天王</h1>
 					</div>
 					<div class="modal-body" align="center">
 						<!-- <img src="img/4/details/title3.jpg" height="400px"> -->
@@ -332,7 +333,7 @@
 
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
 					</div>
 				</div>
 			</div>

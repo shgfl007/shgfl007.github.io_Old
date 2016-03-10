@@ -1,7 +1,7 @@
 //this script handles all the 3d objs in the scene,
 //including hotspots, teleport spots and DOM events
 			var camera, scene, renderer, loader;
-
+			var target = new THREE.Vector3();
 			// var isUserInteracting = false,
 			// onMouseDownMouseX = 0, onMouseDownMouseY = 0,
 			// lon = 0, onMouseDownLon = 0,
@@ -50,7 +50,15 @@
 
 				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
 				//camera.lookAt(new THREE.Vector3( -400, 100, 200 ));
-				camera.target = new THREE.Vector3( -400, 100, 200 );
+				phi = THREE.Math.degToRad( 90 - 50 );
+				theta = THREE.Math.degToRad( 0.5 );
+
+				target.x = Math.sin( phi ) * Math.cos( theta );
+				target.y = Math.cos( phi );
+				target.z = Math.sin( phi ) * Math.sin( theta );
+
+				camera.lookAt( target );
+				//camera.target = new THREE.Vector3( -400, 100, 200 );
 				//camera.rotate.z = 5*Math.PI/180;
 				camera.rotation.x = -90 * Math.PI / 180;
 				camera.rotation.y = 330 * Math.PI / 180;
@@ -78,6 +86,7 @@
 
     				mesh = new THREE.Mesh( geometry, material );
 						mesh.name = "pan";
+						mesh.rotation.y = -180*Math.PI/180;
 
     				scene.add( mesh );
           }
@@ -100,7 +109,7 @@
 
 				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
 				object = new THREE.Mesh( new  THREE.SphereGeometry(15, 20, 10), material);
-				object.position.set(-400, 200, 0);
+				object.position.set(400, 200, 0);
 				object.name = "testOBJ001";
 
 				hotspots.push(object);
@@ -112,7 +121,7 @@
 
 				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
 				var hotspot2 = new THREE.Mesh( new  THREE.SphereGeometry(15, 20, 10), material);
-				hotspot2.position.set(-400, 120, 180);
+				hotspot2.position.set(400, 120, -180);
 				hotspot2.name = "hotspot2";
 
 				hotspots.push(hotspot2);
@@ -125,7 +134,7 @@
 				material.transparent = true; material.opacity = 0.3;
 				var title_2 = new THREE.Mesh( geometry, material );
 
-				title_2.position.set(-95, 120, -43);
+				title_2.position.set(95, 120, 43);
 				title_2.rotation.z = -15*Math.PI/180;
 				title_2.rotation.x = 90*Math.PI/180;
 
@@ -139,7 +148,7 @@
 				material.transparent = true; material.opacity = 0.3;
 				title_1 = new THREE.Mesh( geometry, material );
 
-				title_1.position.set(-60, 120, 73);
+				title_1.position.set(60, 120, -73);
 				//title_1.rotation.y = -15*Math.PI/180;
 				title_1.rotation.z = -15*Math.PI/180;
 				title_1.rotation.x = 90*Math.PI/180;
@@ -178,10 +187,10 @@
 				material.opacity = 0.5;
 				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
 				var tele_left = new THREE.Mesh( new  THREE.PlaneGeometry( 100, 100, 32 ), material);
-				tele_left.rotation.x = 60 * Math.PI/180;
-				tele_left.rotation.z = -15 * Math.PI/180;
+				tele_left.rotation.x = -90 * Math.PI/180;
+				tele_left.rotation.z = 10 * Math.PI/180;
 
-				tele_left.position.set(50, -150, 350);
+				tele_left.position.set(0, -150, -320);
 				//tele_left.position.set(70, -150, 400);
 
 
@@ -191,13 +200,24 @@
 				var material = new THREE.MeshBasicMaterial( { color: 0xffaa00, transparent: true, side: THREE.DoubleSide, blending: THREE.AdditiveBlending, alphaMap: THREE.ImageUtils.loadTexture("img/maps/right.png")} ) ;
 				material.opacity = 0.5;
 				var tele_right = new THREE.Mesh( new  THREE.PlaneGeometry( 100, 100, 32 ), material);
-				tele_right.rotation.x = 30 * Math.PI/180;
+				tele_right.rotation.x = 90 * Math.PI/180;
 				tele_right.rotation.z = -10 * Math.PI/180;
-				tele_right.position.set(-100, -150, -300);
+				tele_right.position.set(80, -150, 300);
 
 
 
 				scene.add(tele_right);
+
+				var material = new THREE.MeshBasicMaterial( { color: 0xffaa00, transparent: true, side: THREE.DoubleSide, blending: THREE.AdditiveBlending, alphaMap: THREE.ImageUtils.loadTexture("img/maps/right.png")} ) ;
+				material.opacity = 0.5;
+				var tele_out = new THREE.Mesh( new  THREE.PlaneGeometry( 80, 80, 32 ), material);
+				tele_out.rotation.x = -90 * Math.PI/180;
+				tele_out.rotation.z = 100 * Math.PI/180;
+				tele_out.position.set(-80, -150, -150);
+
+
+
+				scene.add(tele_out);
 
 
 
@@ -309,6 +329,21 @@
 
 			domEvents.addEventListener(tele_right, 'mouseout', function(event){
 				tele_right.material.opacity = 0.5;
+			});
+
+			domEvents.addEventListener(tele_out, 'click', function(event){
+						//console.log('click on the door!!', object);
+						//tele_left.material.color = 0x4091FF;
+						window.open('pan_scene4_CHN.html','_self');
+				}
+			);
+
+			domEvents.addEventListener(tele_out, 'mouseover', function(event){
+				tele_out.material.opacity = 0.8;
+			});
+
+			domEvents.addEventListener(tele_out, 'mouseout', function(event){
+				tele_out.material.opacity = 0.5;
 			});
 
 //----------------------------------------------------------------------------------------

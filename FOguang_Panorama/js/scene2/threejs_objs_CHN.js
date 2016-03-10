@@ -223,11 +223,11 @@
 				//object = new THREE.Mesh( new  THREE.SphereGeometry(75, 20, 10), material); //change back to r=15
 				var tele_left = new THREE.Mesh( new  THREE.PlaneGeometry( 100, 100, 32 ), material);
 				tele_left.rotation.z = 60 * Math.PI/180;
-				tele_left.rotation.x = 60 * Math.PI/180;
-				tele_left.rotation.y = -50 * Math.PI/180;
-				tele_left.position.set(-250, -150, 250);
+				tele_left.rotation.x = 90 * Math.PI/180;
+				//tele_left.rotation.y = -50 * Math.PI/180;
+				tele_left.position.set(-200, -150, 200);
 
-
+				//tele_left.position.set(0, -150, 0);
 
 				scene.add(tele_left);
 
