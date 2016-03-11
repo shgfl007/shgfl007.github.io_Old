@@ -4,7 +4,7 @@ var bgm = document.getElementById('bgm1');
 
 var m1_count = 0;
 var m5_count = 0;
-
+var canvas;
 $(document).ready(function(){
   //var audio = document.getElementById('bgm1');
   bgm.play();
@@ -177,6 +177,7 @@ function m5_button_next(){
 
 
 function m1_update(direction){
+  console.log("m1_count is " + m1_count);
   var isSupp0 = audio1.canPlayType("audio/mpeg");
   var isSupp1 = audio1.canPlayType("audio/wav");
   var isBgmSupp0 = m1_bgm.canPlayType("audio/mpeg");
@@ -280,7 +281,8 @@ function m1_update(direction){
         }
 
         function init(container, width, height, fillColor) {
-          var canvas = createCanvas(container, width, height);
+          canvas = createCanvas(container, width, height);
+          //canvas.id = "canvas001";
           var ctx = canvas.context;
           ctx.globalAlpha = 0.5;
           position0 = $('#modal1_img').offset();
@@ -387,18 +389,38 @@ function m1_update(direction){
     $('div#m1_text_holder').html("<p><strong>林徽因：</strong>为求得题字的全文，我们当时就请寺僧入村去募工搭架，想将梁下的土朱洗脱，一看究竟。不料村僻人稀，和尚去了一整天，仅得老农二人，对这种工作完全没有经验，筹划了一天，才支起一架。我们已急不能待地把布单撕开浸水相互传递，但是也做了半天才洗出两道梁。土朱一着了水，墨迹就骤然显出，但是水干之后，墨色又淡下去，又隐约不可见了。费了三天时间，才读完题字原文。可喜的是字体宛然唐风，无可置疑。</p>");
 
   }
-  else if((m1_count == 2 && direction == 1) || (m1_count == 1 && direction == -1)){
+  else if((m1_count == 2 && direction == 1))
+  {
+    //show the content of the title
+    //remove the canvas element
+
+    $('#canvas').html('');
+    $('#canvas').html('<p class="intro-text" style="display:none">功\n'+
+    '德\n'+'主\n'+'故\n'+'右\n'+'軍\n'+'中\n'+'尉\n'+'王\n'+ ' \n' + '佛\n' +
+    '殿\n'+'主\n'+'上\n'+'都\n'+'送\n'+'供\n'+'女\n'+'弟\n'+'子\n'+'甯\n'+'公\n'+'遇\n</p>'+
+    '<ul id="result"></ul>');
+    //intro text rolling.
+    var lines = $('.intro-text').text().split("\n");
+
+    var timer,
+        displayLine = function(){
+            var nextLine = lines.shift();
+            if(nextLine){
+                var newLine = $('<li class="line">' + nextLine + '</li>');
+                $('#result').append(newLine);
+                newLine.animate({ 'margin-left':0 }, 1100);
+                timer = setTimeout(displayLine,200);
+            }
+        }
+    timer = setTimeout(displayLine,200);
+    m1_count = m1_count+direction;
+    console.log(m1_count);
+   }
+  else if((m1_count == 3 && direction == 1))
+  {
     //load the first sound track
     //reset status
-    if (isSupp0 === "") {
-      if (isSupp1 === "") {
-        audio1.src="audio/4/1.ogg";
-      }else {
-        audio1.src="audio/4/1.wav";
-      }
-    }else {
-      audio1.src="audio/4/1.mp3";
-    }
+
 
     m1_count = m1_count+direction;
     if (direction == -1) {
@@ -433,7 +455,7 @@ function m1_update(direction){
         m1_bgm.src="audio/3/m3_bgm_0.mp3";
       }
       audio1.pause();
-      m1_bgm.pause();
+      //m1_bgm.pause();
     }
 
   }
@@ -443,7 +465,7 @@ function m1_update(direction){
   }else {
     document.getElementById("m1_pre").hidden = false;
   }
-  if (m1_count == 2) {
+  if (m1_count >= 3) {
     document.getElementById("m1_next").hidden = true;
   }else {
     document.getElementById("m1_next").hidden = false;
@@ -464,14 +486,37 @@ function m1_button_next(){
 $('#modal1').on('shown.bs.modal', function(e){
   var audio1 = document.getElementById('audio1');
   var m1_bgm = document.getElementById('m1_bgm');
-  audio1.load();
-  audio1.play();
-  m1_bgm.load();
-  m1_bgm.play();
-  bgm.pause();
+  var isSupp0 = audio1.canPlayType("audio/mpeg");
+  var isSupp1 = audio1.canPlayType("audio/wav");
+  var isBgmSupp0 = m1_bgm.canPlayType("audio/mpeg");
+  var isBgmSupp1 = m1_bgm.canPlayType("audio/wav");
 
-  //init text area
+
+
+  //init audio + bgm
   if (m1_count==0) {
+
+    if (isSupp0 === "") {
+      if (isSupp1 === "") {
+        audio1.src="audio/4/1.ogg";
+      }else {
+        audio1.src="audio/4/1.wav";
+      }
+    }else {
+      audio1.src="audio/4/1.mp3";
+    }
+
+    if (isBgmSupp0 === "") {
+      if (isBgmSupp1 === "") {
+        m1_bgm.src="audio/3/m3_bgm_0.ogg";
+      }else {
+        m1_bgm.src="audio/3/m3_bgm_0.wav";
+      }
+    }else {
+      m1_bgm.src="audio/3/m3_bgm_0.mp3";
+    }
+
+
     $('div#m1_text_holder').html("<p><strong>林徽因：</strong>我们在东大殿工作了几天，才看见殿内梁底隐约有墨迹，且有字的左右共四梁，这个发现对我们大家有如电击一般，没有比写在梁柱上或刻在石头上的日期更让人喜欢的东西了。但字迹被土朱所掩盖，梁底离地两丈多高，光线又不足，各梁的文字颇难确辨，审视了许久，各人凭字迹的目力，揣拟再三，才认出官职一二，而不能辨别人名。我素来远视，独见“女弟子宁公遇”之名，深怕有误，又详细检查阶前经幢上的姓名。</p>");
 
     //int gallery
@@ -488,7 +533,15 @@ $('#modal1').on('shown.bs.modal', function(e){
       '<div class="controls"><a href="#item-1" class="control-button">•</a>'+
       '<a href="#item-2" class="control-button">•</a><a href="#item-3" class="control-button">•</a></div>'
     );
+    document.getElementById("m1_pre").hidden = true;
+    document.getElementById("m1_next").hidden = false;
   }
+
+  audio1.load();
+  audio1.play();
+  m1_bgm.load();
+  m1_bgm.play();
+  bgm.pause();
 
   audio1.onended = function(){
     m1_update(1);
@@ -499,6 +552,9 @@ $('#modal1').on('shown.bs.modal', function(e){
 $('#modal1').on('hide.bs.modal', function(e){
   var audio1 = document.getElementById('audio1');
   var m1_bgm = document.getElementById('m1_bgm');
+  if (m1_count>=3) {
+    m1_count=0;
+  }
   m1_bgm.pause();
   audio1.pause();
   bgm.play();

@@ -44,6 +44,10 @@ a {
   font-family: 'fontAwesome';
   src: local("fontAwesome.otf"), url("../font/fontAwesome.otf"); }
 
+@font-face {
+    font-family: 'contentFont';
+    src: local("yuweif.woff"), url("../font/contentFont.woff"); }
+
 h1, h2, h4 {
   font-family: 'titleFont', Helvetica, Arial, sans-serif; }
 
@@ -59,6 +63,24 @@ h3, h4, h5 {
 button, btn {
   font-family: 'titleFont', Helvetica, Arial, sans-serif;
 }
+
+.s3_m1_title {
+  padding-left: 20px;
+  margin-bottom: -4px;
+  color: #FF3108;
+  font-size: 15px;
+}
+
+.intro-text {
+    padding:20px 20px 0 30px;
+    max-width: 600px;
+    color:white;
+  position: relative;
+  p{
+      min-width: 300px !important;
+  }
+}
+.line{ margin-left: 100%; overflow:hidden;height:17px;color:white;}
 
 .modalDialog {
   position: fixed;
