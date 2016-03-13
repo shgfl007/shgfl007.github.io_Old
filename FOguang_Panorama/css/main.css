@@ -48,8 +48,8 @@ a {
     font-family: 'contentFont';
     src: local("yuweif.woff"), url("../font/contentFont.woff"); }
 
-h1, h2, h4 {
-  /*font-family: 'titleFont', Helvetica, Arial, sans-serif; }*/
+/*h1, h2, h4 {
+  font-family: 'titleFont', Helvetica, Arial, sans-serif; }*/
 
 p {
   font-family: 'Arial',Helvetica; }
