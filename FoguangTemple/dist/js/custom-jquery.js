@@ -62,12 +62,7 @@ $( document ).ready(function() {
       //do nothing
     }
 
-    //try play first audio
-    try {
-      $('audio#1').attr("autoplay","");
-    } catch (e) {
 
-    }
     // // $('.timeline-each').css('opacity','0.5');
     // // $("h1, h2, p").addClass("blue");
     //  $("div").css("border","3px solid red");
