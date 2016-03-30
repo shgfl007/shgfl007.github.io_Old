@@ -75,7 +75,7 @@ timelineControllers.controller('timelineController', ['$scope', '$http', functio
       return audio.id === 1;
     });
     $('audio').css('border',"solid");
-    //$('audio#1').attr("autoplay","");
+
     $scope.selectItem = function(selectedItem){
     	for(var i = 0; i < $scope.events.length; i++){
             var item = $scope.events[i];
@@ -139,8 +139,8 @@ timelineControllers.controller('Chap2Controller', ['$scope', '$http',function($s
     //auto play audio
     var playaudio = (function(number){
         var currentAudio = document.getElementById('audio_' + number);
-        //currentAudio.load();
-        //currentAudio.play();
+        currentAudio.load();
+        currentAudio.play();
         console.log(number);
     });
 
@@ -242,18 +242,18 @@ timelineControllers.controller('tabcontrol',function(){
 /*-------------------------------------------------------------------------------------------------
   This plugin is based on the GAPJUMPER line example http://www.gapjumper.com/research/lines.html.
   Special thanks to its author!
-  Author: Tiago do Bem
+  Author: Tiago do Bem 
   Date: March 2013
   URL: https://github.com/tbem/jquery.line
   The jQuery.line.js plugin is distributed under the GNU General Public License version 3 (GPLv3).
   -------------------------------------------------------------------------------------------------
-*/
+*/ 
 
 (function($) {
 
   var helpers = {
     createLine: function(x1, y1, x2, y2, options){
-
+      
                   // Check if browser is Internet Exploder ;)
                   var isIE = navigator.userAgent.indexOf("MSIE") > -1;
                   if (x2 < x1){
@@ -265,7 +265,7 @@ timelineControllers.controller('tabcontrol',function(){
                     y2 = temp;
                   }
                   var line = document.createElement("div");
-
+                  
                   // Formula for the distance between two points
                   // http://www.mathopenref.com/coorddist.html
                   var length = Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
@@ -291,7 +291,7 @@ timelineControllers.controller('tabcontrol',function(){
                   return line;
                 }
   }
-
+  
 
   $.fn.line = function( x1, y1, x2, y2, options, callbacks) {
                 return $(this).each(function(){
@@ -309,7 +309,7 @@ timelineControllers.controller('tabcontrol',function(){
                     }
                   });
 
-
+                
               });
   };
   $.fn.line.defaults = {  zindex : 10000,
@@ -318,3 +318,4 @@ timelineControllers.controller('tabcontrol',function(){
                           style: "solid",
                         };
 })(jQuery);
+

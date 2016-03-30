@@ -56,12 +56,11 @@ timer = setTimeout(displayLine,400);
 
 $( document ).ready(function() {
     $('html').fadeIn(700);
-    try{
+    try {
       bgm.play();
-    }catch(err){
-      //do nothing
-    }
+    } catch (e) {
 
+    } 
 
     // // $('.timeline-each').css('opacity','0.5');
     // // $("h1, h2, p").addClass("blue");

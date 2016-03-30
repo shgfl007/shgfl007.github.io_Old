@@ -1,6 +1,6 @@
 <div class="landscape">
  <div class="sunrise-intro fade-in title">
-     <audio controls autoplay>
+     <audio controls autoplay id="intro_narr">
        <source src="media/scene1/0.mp3" type="audio/mp3">
      Your browser does not support the audio element.
      </audio>
@@ -13,9 +13,16 @@
     四大名山。隋唐時代吸引了許多信徒，香火
     極盛，名播長安、敦煌等地，遠及日本。</p>
  <ul id="result"></ul>
- <a href="#/tab/timeline"><button>开始</button></a>
+ <a href="#/tab/timeline"><button onclick="pauseAudio()">开始</button></a>
 
   </div>
+  <script>
+  function pauseAudio(){
+    console.log("pause audio function called");
+    var audio = document.getElementById("intro_narr");
+    audio.load();audio.pause();
+  }
+  </script>
 
   <!-- <div class="observe-pos">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
