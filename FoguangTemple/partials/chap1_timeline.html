@@ -3,6 +3,7 @@
     <div class ="scene-title-box fade-in title">
       <h3>第一章</h3>
       <h1 class="scene-title-lgword">佛光寺時間史</h1>
+      <button id="chap1_start" onclick="playAudio(0)">开始</button>
   </div>
   </div>
   <ul class="timeline-list fade-in content">
@@ -12,7 +13,7 @@
     <li class="timeline-each hori-scroll hideme" ng-repeat="item in events | orderBy: date" ng-click="selectItem(item)" ng-class="{activecards:item.selected}">
       <!--href="#/details/{{events.indexOf(item)}}" -->
       <div class="left-timeline">
-      <audio controls id="{{item.id}}" onended="test({{item.id}})">
+      <audio controls id="{{item.id}}" onended="playAudio(1)">
           <source ng-src="{{item.audio | trustUrl}}"></source>
       </audio>
         <h1>{{item.title}}</h1>
@@ -36,11 +37,31 @@
 </div></a>
   </ul>
 
-  <!-- <audio autoplay="" controls="" loop="" preload="" class="background-mvc">
+  <audio autoplay="" controls="" loop="" preload="" class="background-mvc">
     <source src="media/scene1/bgm/001.mp3" type="audio/mpeg">
     <source src="media/scene1/bgm/001.ogg" type="audio/ogg">
     <source src="media/scene1/bgm/001.wav" type="audio/wav">
    Your browser does not support the audio element.
-  </audio> -->
+  </audio>
+<script>
+var count = 0;
+var audios = document.getElementsByTagName('audio');
 
+function playAudio(direction){
+  console.log("play audio function called");
+  if (direction>0) {
+    if (count<audios.length) {
+      count++;
+      audios[count].load();audios[count].play();
+
+    }else {
+      count=0;
+    }
+  }else if (direction==0) {
+    //init
+    audios[0].load();audios[0].play();
+  }
+
+}
+</script>
 </section>
