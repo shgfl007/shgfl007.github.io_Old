@@ -64,6 +64,11 @@ button, btn {
   font-family: 'titleFont', Helvetica, Arial, sans-serif;
 }
 
+li {
+  font-family: 'HanWangWCL06',times;
+  font-weight: normal;
+  font-size: 12pt; }
+
 .s3_m1_title {
   padding-left: 20px;
   margin-bottom: -4px;
